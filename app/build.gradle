@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion versions.androidSdk.compile
+
+    defaultConfig {
+        applicationId 'com.example'
+        minSdkVersion versions.androidSdk.min
+        targetSdkVersion versions.androidSdk.target
+        versionCode 1
+        versionName '1.0'
+
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation libraries.kotlinStdLib
+    implementation libraries.supportAppCompatV7
+    implementation libraries.supportDesign
+    implementation libraries.supportRecyclerView
+    implementation libraries.supportV13
+
+    // Android runner and rules support
+    androidTestImplementation(libraries.androidTestRunner) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+
+    androidTestImplementation(libraries.androidTestRules) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+
+    // Espresso support
+    androidTestImplementation(libraries.espressoCore) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+
+    testImplementation libraries.googleTruth
+    testImplementation libraries.jUnit
+    testImplementation libraries.mockitoCore
+}

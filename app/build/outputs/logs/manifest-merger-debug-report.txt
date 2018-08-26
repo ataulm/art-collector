@@ -1,0 +1,171 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:1:1-25:12
+INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:1:1-25:12
+INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:1:1-25:12
+INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:1:1-25:12
+MERGED from [com.android.support:design:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha3.aar/b18dfd3dd7a43e84cd94373877bfd883/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0-alpha3.aar/6ebdd3bcb89eba9f95b6c52ee298d3da/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0-alpha3.aar/87315ec701bd99490b61bdf1fc2b4814/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v13:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-v13-28.0.0-alpha3.aar/260997340558d85a771aa194e979d347/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-v4:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-v4-28.0.0-alpha3.aar/d19b88446a737f3d19e8a4a0ad6d30a6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-fragment:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0-alpha3.aar/ca26d9ba9e590d4af8d9ff684b681b13/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0-alpha3.aar/c8376b25c2a09f29863c7c872c11acd7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0-alpha3.aar/f6d830b22e82d5d126a152b030cfaefe/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0-alpha3.aar/bc0ed481fee1ed144abf85f4d3a971aa/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0-alpha3.aar/4ea4738696d6fd34cb2c695d706d8903/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/transition-28.0.0-alpha3.aar/6c3480b8a19d8e120d772b29d6f8ebb4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/loader-28.0.0-alpha3.aar/d07aab219cc4febee6da0e5092eccc57/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0-alpha3.aar/f4e26ac90d014b0c0b0849decea62b2c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0-alpha3.aar/0e74e36db5a408655671b35bf8dc542e/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0-alpha3.aar/060929939730898e8d0926d6fac16aa7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0-alpha3.aar/02e031b38665fa10554bdd9faaf885cb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/customview-28.0.0-alpha3.aar/21a917d12af3faef924a7d4e274e0cca/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0-alpha3.aar/f0a8e215680717c9c5bca9ca328dbe58/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0-alpha3.aar/2dfa71edfb01798ec4ba593fd981af27/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-media-compat-28.0.0-alpha3.aar/74e9d24e98d6c328d9247932f2d39ae4/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0-alpha3.aar/2ed4578cd5fbba82a6ee25602076ad93/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:cursoradapter:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0-alpha3.aar/fcb3a952c4921c5d81e1981f66e1aec9/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0-alpha3.aar/f28ca55fd9c8e439051b6dcd456c04b3/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/7b4e7b064aff2e00d584fa05a927ea38/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:versionedparcelable:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0-alpha3.aar/50ec65bc151a6c2b228e8572a5f0a12a/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:documentfile:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0-alpha3.aar/ca956183d5609ee8641634bc0fcc3158/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0-alpha3.aar/b9dfa14e29b930e56eb6344d773c2b28/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/print-28.0.0-alpha3.aar/3dd069fc0775d85f836a8aa24a281b3e/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/5f01eab82b93b4b6bbab165243c10f74/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0-alpha3.aar/d5df22a5836196c2f525d703d244c777/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/78a1d0adb4313383d3a0f3a0800d071d/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/687406635620fad3ab0280e0341f0655/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:1:1-25:12
+INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:1:1-25:12
+INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:1:1-25:12
+	package
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:2:5-26
+		INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:1:1-25:12
+		INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:1:1-25:12
+		INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:1:11-69
+application
+ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:4:5-23:19
+MERGED from [com.android.support:design:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha3.aar/b18dfd3dd7a43e84cd94373877bfd883/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha3.aar/b18dfd3dd7a43e84cd94373877bfd883/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-compat:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0-alpha3.aar/2ed4578cd5fbba82a6ee25602076ad93/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0-alpha3.aar/2ed4578cd5fbba82a6ee25602076ad93/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0-alpha3.aar/50ec65bc151a6c2b228e8572a5f0a12a/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0-alpha3.aar/50ec65bc151a6c2b228e8572a5f0a12a/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0-alpha3.aar/2ed4578cd5fbba82a6ee25602076ad93/AndroidManifest.xml:22:18-91
+	android:label
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:7:9-41
+	android:icon
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:6:9-45
+	android:allowBackup
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:5:9-35
+	android:theme
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:8:9-40
+activity#com.example.MyActivity
+ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:10:9-59
+	android:name
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:10:19-56
+activity-alias#activity.primary_launcher
+ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:12:9-21:26
+	android:targetActivity
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:14:13-60
+	android:name
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:13:13-53
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:16:13-19:29
+action#android.intent.action.MAIN
+ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:18:17-77
+	android:name
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml:18:27-74
+uses-sdk
+INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha3.aar/b18dfd3dd7a43e84cd94373877bfd883/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha3.aar/b18dfd3dd7a43e84cd94373877bfd883/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0-alpha3.aar/6ebdd3bcb89eba9f95b6c52ee298d3da/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0-alpha3.aar/6ebdd3bcb89eba9f95b6c52ee298d3da/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0-alpha3.aar/87315ec701bd99490b61bdf1fc2b4814/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0-alpha3.aar/87315ec701bd99490b61bdf1fc2b4814/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v13:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-v13-28.0.0-alpha3.aar/260997340558d85a771aa194e979d347/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v13:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-v13-28.0.0-alpha3.aar/260997340558d85a771aa194e979d347/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-v4-28.0.0-alpha3.aar/d19b88446a737f3d19e8a4a0ad6d30a6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-v4-28.0.0-alpha3.aar/d19b88446a737f3d19e8a4a0ad6d30a6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0-alpha3.aar/ca26d9ba9e590d4af8d9ff684b681b13/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0-alpha3.aar/ca26d9ba9e590d4af8d9ff684b681b13/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0-alpha3.aar/c8376b25c2a09f29863c7c872c11acd7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0-alpha3.aar/c8376b25c2a09f29863c7c872c11acd7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0-alpha3.aar/f6d830b22e82d5d126a152b030cfaefe/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0-alpha3.aar/f6d830b22e82d5d126a152b030cfaefe/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0-alpha3.aar/bc0ed481fee1ed144abf85f4d3a971aa/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0-alpha3.aar/bc0ed481fee1ed144abf85f4d3a971aa/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0-alpha3.aar/4ea4738696d6fd34cb2c695d706d8903/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0-alpha3.aar/4ea4738696d6fd34cb2c695d706d8903/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/transition-28.0.0-alpha3.aar/6c3480b8a19d8e120d772b29d6f8ebb4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/transition-28.0.0-alpha3.aar/6c3480b8a19d8e120d772b29d6f8ebb4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/loader-28.0.0-alpha3.aar/d07aab219cc4febee6da0e5092eccc57/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/loader-28.0.0-alpha3.aar/d07aab219cc4febee6da0e5092eccc57/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0-alpha3.aar/f4e26ac90d014b0c0b0849decea62b2c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0-alpha3.aar/f4e26ac90d014b0c0b0849decea62b2c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0-alpha3.aar/0e74e36db5a408655671b35bf8dc542e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0-alpha3.aar/0e74e36db5a408655671b35bf8dc542e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0-alpha3.aar/060929939730898e8d0926d6fac16aa7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0-alpha3.aar/060929939730898e8d0926d6fac16aa7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0-alpha3.aar/02e031b38665fa10554bdd9faaf885cb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0-alpha3.aar/02e031b38665fa10554bdd9faaf885cb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/customview-28.0.0-alpha3.aar/21a917d12af3faef924a7d4e274e0cca/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/customview-28.0.0-alpha3.aar/21a917d12af3faef924a7d4e274e0cca/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0-alpha3.aar/f0a8e215680717c9c5bca9ca328dbe58/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0-alpha3.aar/f0a8e215680717c9c5bca9ca328dbe58/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0-alpha3.aar/2dfa71edfb01798ec4ba593fd981af27/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0-alpha3.aar/2dfa71edfb01798ec4ba593fd981af27/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-media-compat-28.0.0-alpha3.aar/74e9d24e98d6c328d9247932f2d39ae4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-media-compat-28.0.0-alpha3.aar/74e9d24e98d6c328d9247932f2d39ae4/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0-alpha3.aar/2ed4578cd5fbba82a6ee25602076ad93/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0-alpha3.aar/2ed4578cd5fbba82a6ee25602076ad93/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0-alpha3.aar/fcb3a952c4921c5d81e1981f66e1aec9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0-alpha3.aar/fcb3a952c4921c5d81e1981f66e1aec9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0-alpha3.aar/f28ca55fd9c8e439051b6dcd456c04b3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0-alpha3.aar/f28ca55fd9c8e439051b6dcd456c04b3/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/7b4e7b064aff2e00d584fa05a927ea38/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/7b4e7b064aff2e00d584fa05a927ea38/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0-alpha3.aar/50ec65bc151a6c2b228e8572a5f0a12a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0-alpha3.aar/50ec65bc151a6c2b228e8572a5f0a12a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0-alpha3.aar/ca956183d5609ee8641634bc0fcc3158/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0-alpha3.aar/ca956183d5609ee8641634bc0fcc3158/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0-alpha3.aar/b9dfa14e29b930e56eb6344d773c2b28/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0-alpha3.aar/b9dfa14e29b930e56eb6344d773c2b28/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/print-28.0.0-alpha3.aar/3dd069fc0775d85f836a8aa24a281b3e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/print-28.0.0-alpha3.aar/3dd069fc0775d85f836a8aa24a281b3e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/5f01eab82b93b4b6bbab165243c10f74/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/5f01eab82b93b4b6bbab165243c10f74/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0-alpha3.aar/d5df22a5836196c2f525d703d244c777/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0-alpha3] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0-alpha3.aar/d5df22a5836196c2f525d703d244c777/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/78a1d0adb4313383d3a0f3a0800d071d/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/78a1d0adb4313383d3a0f3a0800d071d/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/687406635620fad3ab0280e0341f0655/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/ataulm/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/687406635620fad3ab0280e0341f0655/AndroidManifest.xml:20:5-44
+INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+		ADDED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/ataulm/src/github.com/ataulm/android-skeleton/app/src/main/AndroidManifest.xml
