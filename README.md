@@ -1,5 +1,5 @@
-no-name-yet
-===========
+art collector
+=============
 
 https://github.com/harvardartmuseums/api-docs
 
