@@ -1,8 +1,11 @@
 buildscript {
     apply from: 'dependencies.gradle'
     repositories {
-        jcenter()
         google()
+        jcenter()
+        maven {
+            url 'https://dl.bintray.com/kotlin/kotlin-eap/'
+        }
     }
     dependencies {
         classpath libraries.build.androidGradle
@@ -12,7 +15,10 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
         google()
+        jcenter()
+        maven {
+            url 'https://dl.bintray.com/kotlin/kotlin-eap/'
+        }
     }
 }
