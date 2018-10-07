@@ -13,4 +13,7 @@ We need three screens:
 - `piece/{object_id}` showing a single piece
 
 #### Current state (inc. next steps if applicable)
-vaporware.
+
+- Created `HarvardApi.paintings(): Deferred<Any>`
+- Next, need to learn htf to use Deferred and create a type for the response so it can be persisted
+with Realm (save as many as I can) (with the intention of swapping it out for Room later)
