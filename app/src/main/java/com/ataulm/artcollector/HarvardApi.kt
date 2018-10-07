@@ -5,13 +5,13 @@ import retrofit2.http.GET
 
 internal interface HarvardApi {
 
-    @GET("object?$QUERY_ONLY_PAINTINGS&$QUERY_ONLY_WITH_IMAGES")
+    @GET("object?$FILTER_PAINTINGS&$FILTER_HAS_IMAGES")
     fun paintings(): Deferred<Any>
 
     companion object {
 
         const val ENDPOINT = "https://api.harvardartmuseums.org"
-        private const val QUERY_ONLY_PAINTINGS = "classification=26"
-        private const val QUERY_ONLY_WITH_IMAGES = "hasimage=1"
+        private const val FILTER_PAINTINGS = "classification=26"
+        private const val FILTER_HAS_IMAGES = "hasimage=1"
     }
 }
