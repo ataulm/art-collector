@@ -7,7 +7,7 @@ android {
     compileSdkVersion versions.androidSdk.compile
 
     defaultConfig {
-        applicationId 'com.example'
+        applicationId 'com.ataulm.artcollector'
         minSdkVersion versions.androidSdk.min
         targetSdkVersion versions.androidSdk.target
         versionCode 1
