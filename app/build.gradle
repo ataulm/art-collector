@@ -29,6 +29,7 @@ dependencies {
     implementation libraries.kotlinStdLib
     implementation libraries.moshi
     implementation libraries.retrofit
+    implementation libraries.retrofitKotlinCoroutines
     implementation libraries.supportAppCompatV7
     implementation libraries.supportDesign
     implementation libraries.supportRecyclerView
