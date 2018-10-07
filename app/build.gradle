@@ -18,13 +18,16 @@ android {
     buildTypes {
         release {
             minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),
+                    'proguard-rules.pro',
+                    'proguard-rules-retrofit.pro'
         }
     }
 }
 
 dependencies {
     implementation libraries.kotlinStdLib
+    implementation libraries.retrofit
     implementation libraries.supportAppCompatV7
     implementation libraries.supportDesign
     implementation libraries.supportRecyclerView
