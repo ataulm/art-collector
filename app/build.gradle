@@ -27,6 +27,9 @@ android {
 
 dependencies {
     implementation libraries.androidArchLifecycleExtensions
+    implementation libraries.dagger
+    kapt libraries.daggerAndroid
+    kapt libraries.daggerCompiler
     implementation libraries.kotlinStdLib
     implementation libraries.moshi
     implementation libraries.retrofit
