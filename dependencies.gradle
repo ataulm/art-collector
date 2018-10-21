@@ -15,6 +15,7 @@ ext {
                     androidGradle: 'com.android.tools.build:gradle:3.3.0-alpha03',
                     kotlinGradle : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
             ],
+            androidArchLifecycleExtensions   : "android.arch.lifecycle:extensions:1.1.1",
             androidTestRules        : "com.android.support.test:rules:${versions.supportTest}",
             androidTestRunner       : "com.android.support.test:runner:${versions.supportTest}",
             espressoCore            : 'com.android.support.test.espresso:espresso-core:3.0.2',

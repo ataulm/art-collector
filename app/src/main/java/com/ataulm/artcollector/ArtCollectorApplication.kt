@@ -7,15 +7,5 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class ArtCollectorApplication : Application() {
 
-    private lateinit var harvardApi: HarvardApi
 
-    override fun onCreate() {
-        super.onCreate()
-        harvardApi = Retrofit.Builder()
-                .baseUrl(HarvardApi.ENDPOINT)
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
-                .addConverterFactory(MoshiConverterFactory.create())
-                .build()
-                .create(HarvardApi::class.java)
-    }
 }
