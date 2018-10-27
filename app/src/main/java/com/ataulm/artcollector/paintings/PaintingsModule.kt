@@ -1,9 +1,11 @@
 package com.ataulm.artcollector.paintings
 
+import android.arch.lifecycle.ViewModelProviders
 import com.ataulm.artcollector.HarvardArtMuseumApi
 import com.ataulm.artcollector.paintings.data.AndroidPaintingsRepository
-import com.ataulm.artcollector.paintings.domain.GetPaintingsUseCase
 import com.ataulm.artcollector.paintings.domain.PaintingsRepository
+import com.ataulm.artcollector.paintings.ui.PaintingsActivity
+import com.ataulm.artcollector.paintings.ui.PaintingsViewModel
 import com.ataulm.artcollector.paintings.ui.PaintingsViewModelFactory
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
@@ -20,8 +22,8 @@ internal object PaintingsModule {
     }
 
     @Provides
-    fun viewModelFactory(getPaintingsUseCase: GetPaintingsUseCase) =
-            PaintingsViewModelFactory(getPaintingsUseCase)
+    fun viewModel(activity: PaintingsActivity, viewModelFactory: PaintingsViewModelFactory) =
+            ViewModelProviders.of(activity, viewModelFactory).get(PaintingsViewModel::class.java)
 
     @Provides
     fun harvardArtMuseumApi(): HarvardArtMuseumApi {
