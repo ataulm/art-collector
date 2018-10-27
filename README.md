@@ -14,6 +14,7 @@ We need three screens:
 
 #### Current state (inc. next steps if applicable)
 
-- Created `HarvardApi.paintings(): Deferred<Any>`
-- Next, need to learn htf to use Deferred and create a type for the response so it can be persisted
-with Realm (save as many as I can) (with the intention of swapping it out for Room later)
+- Added Dagger in the `paintings` package
+- the `paintings` package should move into its own feature module, but can wait until adding another
+feature
+- next: use coroutines to fetch and display a list of paintings in the activity

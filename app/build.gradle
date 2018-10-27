@@ -56,4 +56,5 @@ dependencies {
     testImplementation libraries.googleTruth
     testImplementation libraries.jUnit
     testImplementation libraries.mockitoCore
+    testImplementation libraries.mockitoKotlin
 }

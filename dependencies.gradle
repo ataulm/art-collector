@@ -12,27 +12,28 @@ ext {
     ]
 
     libraries = [
-            build                   : [
+            build                         : [
                     androidGradle: 'com.android.tools.build:gradle:3.3.0-alpha03',
                     kotlinGradle : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
             ],
-            androidArchLifecycleExtensions   : "android.arch.lifecycle:extensions:1.1.1",
-            androidTestRules        : "com.android.support.test:rules:${versions.supportTest}",
-            androidTestRunner       : "com.android.support.test:runner:${versions.supportTest}",
-            dagger                  : "com.google.dagger:dagger:${versions.dagger}",
-            daggerAndroid           : "com.google.dagger:dagger-android-processor:${versions.dagger}",
-            daggerCompiler          : "com.google.dagger:dagger-compiler:${versions.dagger}",
-            espressoCore            : 'com.android.support.test.espresso:espresso-core:3.0.2',
-            googleTruth             : 'com.google.truth:truth:0.42',
-            jUnit                   : 'junit:junit:4.12',
-            kotlinStdLib            : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
-            mockitoCore             : 'org.mockito:mockito-core:2.19.1',
-            moshi                   : 'com.squareup.retrofit2:converter-moshi:2.4.0',
-            retrofit                : 'com.squareup.retrofit2:retrofit:2.4.0',
-            retrofitKotlinCoroutines: 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2',
-            supportAppCompatV7      : "com.android.support:appcompat-v7:${versions.support}",
-            supportDesign           : "com.android.support:design:${versions.support}",
-            supportRecyclerView     : "com.android.support:recyclerview-v7:${versions.support}",
-            supportV13              : "com.android.support:support-v13:${versions.support}"
+            androidArchLifecycleExtensions: 'android.arch.lifecycle:extensions:1.1.1',
+            androidTestRules              : "com.android.support.test:rules:${versions.supportTest}",
+            androidTestRunner             : "com.android.support.test:runner:${versions.supportTest}",
+            dagger                        : "com.google.dagger:dagger:${versions.dagger}",
+            daggerAndroid                 : "com.google.dagger:dagger-android-processor:${versions.dagger}",
+            daggerCompiler                : "com.google.dagger:dagger-compiler:${versions.dagger}",
+            espressoCore                  : 'com.android.support.test.espresso:espresso-core:3.0.2',
+            googleTruth                   : 'com.google.truth:truth:0.42',
+            jUnit                         : 'junit:junit:4.12',
+            kotlinStdLib                  : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+            mockitoCore                   : 'org.mockito:mockito-core:2.19.1',
+            mockitoKotlin                 : 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0',
+            moshi                         : 'com.squareup.retrofit2:converter-moshi:2.4.0',
+            retrofit                      : 'com.squareup.retrofit2:retrofit:2.4.0',
+            retrofitKotlinCoroutines      : 'com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2',
+            supportAppCompatV7            : "com.android.support:appcompat-v7:${versions.support}",
+            supportDesign                 : "com.android.support:design:${versions.support}",
+            supportRecyclerView           : "com.android.support:recyclerview-v7:${versions.support}",
+            supportV13                    : "com.android.support:support-v13:${versions.support}"
     ]
 }
