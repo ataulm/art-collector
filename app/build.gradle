@@ -27,6 +27,8 @@ android {
 
 dependencies {
     implementation libraries.androidArchLifecycleExtensions
+    debugImplementation libraries.chuck
+    releaseImplementation libraries.chuckNoOp
     implementation libraries.dagger
     kapt libraries.daggerAndroid
     kapt libraries.daggerCompiler

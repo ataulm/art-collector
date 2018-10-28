@@ -15,8 +15,6 @@ internal interface PaintingsComponent {
         @BindsInstance
         fun activity(activity: PaintingsActivity): Builder
 
-        fun paintingsModule(module: PaintingsModule): Builder
-
         fun build(): PaintingsComponent
     }
 }
