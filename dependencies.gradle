@@ -1,15 +1,16 @@
 ext {
     versions = [
-            androidSdk : [
+            androidSdk      : [
                     compile: 28,
                     min    : 23,
                     target : 28
             ],
-            chuck      : '1.1.0',
-            dagger     : '2.16',
-            kotlin     : '1.3.0-rc-57',
-            supportTest: '1.0.2',
-            support    : '28.0.0-alpha3'
+            chuck           : '1.1.0',
+            dagger          : '2.16',
+            kotlin          : '1.3.0-rc-146',
+            kotlinCoroutines: '1.0.0-RC1',
+            supportTest     : '1.0.2',
+            support         : '28.0.0-alpha3'
     ]
 
     libraries = [
@@ -29,6 +30,8 @@ ext {
             googleTruth                   : 'com.google.truth:truth:0.42',
             jUnit                         : 'junit:junit:4.12',
             kotlinStdLib                  : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+            kotlinCoroutinesAndroid       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinCoroutines}",
+            kotlinCoroutinesCore          : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinCoroutines}",
             mockitoCore                   : 'org.mockito:mockito-core:2.19.1',
             mockitoKotlin                 : 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0',
             moshi                         : 'com.squareup.retrofit2:converter-moshi:2.4.0',

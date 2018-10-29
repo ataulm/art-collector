@@ -30,8 +30,8 @@ dependencies {
     debugImplementation libraries.chuck
     releaseImplementation libraries.chuckNoOp
     implementation libraries.dagger
-    kapt libraries.daggerAndroid
-    kapt libraries.daggerCompiler
+    implementation libraries.kotlinCoroutinesAndroid
+    implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib
     implementation libraries.moshi
     implementation libraries.retrofit
@@ -40,6 +40,9 @@ dependencies {
     implementation libraries.supportDesign
     implementation libraries.supportRecyclerView
     implementation libraries.supportV13
+
+    kapt libraries.daggerAndroid
+    kapt libraries.daggerCompiler
 
     // Android runner and rules support
     androidTestImplementation(libraries.androidTestRunner) {

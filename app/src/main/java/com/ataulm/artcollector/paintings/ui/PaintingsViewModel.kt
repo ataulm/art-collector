@@ -22,9 +22,7 @@ internal class PaintingsLiveData @Inject constructor(
         super.onActive()
         job = CoroutineScope(Dispatchers.IO).launch {
             val paintings = getPaintings()
-            withContext(Dispatchers.Default) {
-                postValue(paintings) // TODO: what's the Dispatcher for main thread so I can use setValue?
-            }
+            withContext(Dispatchers.Main) { value = paintings }
         }
     }
 
