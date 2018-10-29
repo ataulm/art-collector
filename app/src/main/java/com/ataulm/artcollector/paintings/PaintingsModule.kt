@@ -42,15 +42,11 @@ internal object PaintingsModule {
 
     @JvmStatic
     @Provides
-    fun chuckInterceptor(activity: PaintingsActivity) = ChuckInterceptor(activity)
-
-    @JvmStatic
-    @Provides
-    fun harvardArtMuseumApi(chuckInterceptor: ChuckInterceptor): HarvardArtMuseumApi {
+    fun harvardArtMuseumApi(activity: PaintingsActivity): HarvardArtMuseumApi {
         return Retrofit.Builder()
                 .client(OkHttpClient.Builder()
                         .addNetworkInterceptor(AddApiKeyQueryParameterInterceptor("get an api key")) // TODO: pass this via buildconfig
-                        .addInterceptor(chuckInterceptor)
+                        .addInterceptor(ChuckInterceptor(activity))
                         .build())
                 .baseUrl(HarvardArtMuseumApi.ENDPOINT)
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
