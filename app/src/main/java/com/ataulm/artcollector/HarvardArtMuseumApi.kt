@@ -1,6 +1,7 @@
 package com.ataulm.artcollector
 
 import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -31,11 +32,13 @@ internal class AddApiKeyQueryParameterInterceptor(private val apiKey: String) : 
     }
 }
 
+@JsonClass(generateAdapter = true)
 internal data class ApiResponse(
         @Json(name = "info") val info: ApiInfo,
         @Json(name = "records") val records: List<ApiRecord>
 )
 
+@JsonClass(generateAdapter = true)
 internal data class ApiInfo(
         @Json(name = "totalrecordsperquery") val totalRecordsPerQuery: Int,
         @Json(name = "totalrecords") val totalRecords: Int,
@@ -44,9 +47,10 @@ internal data class ApiInfo(
         @Json(name = "next") val next: String
 )
 
+@JsonClass(generateAdapter = true)
 internal data class ApiRecord(
         @Json(name = "id") val id: Int,
         @Json(name = "title") val title: String,
         @Json(name = "description") val description: String?,
-        @Json(name = "primaryimageurl") val primaryImageUrl: String?
+        @Json(name = "primaryimageurl") val primaryImageUrl: String
 )
