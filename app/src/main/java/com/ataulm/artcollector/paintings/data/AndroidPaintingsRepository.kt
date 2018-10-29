@@ -20,7 +20,7 @@ internal class AndroidPaintingsRepository @Inject constructor(
                 id.toString(),
                 title,
                 description,
-                primaryImageUrl ?: "wtf" // this is in the JSON so why is it null in ApiRecord?
+                primaryImageUrl
         )
     }
 }

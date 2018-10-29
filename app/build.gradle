@@ -20,6 +20,8 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
                     'proguard-rules.pro',
+                    'proguard-rules-moshi.pro',
+                    'proguard-rules-moshi-kotlin.pro',
                     'proguard-rules-retrofit.pro'
         }
     }
@@ -30,16 +32,19 @@ dependencies {
     debugImplementation libraries.chuck
     releaseImplementation libraries.chuckNoOp
     implementation libraries.dagger
-    kapt libraries.daggerAndroid
-    kapt libraries.daggerCompiler
     implementation libraries.kotlinStdLib
     implementation libraries.moshi
     implementation libraries.retrofit
+    implementation libraries.retrofitMoshi
     implementation libraries.retrofitKotlinCoroutines
     implementation libraries.supportAppCompatV7
     implementation libraries.supportDesign
     implementation libraries.supportRecyclerView
     implementation libraries.supportV13
+
+    kapt libraries.daggerAndroid
+    kapt libraries.daggerCompiler
+    kapt libraries.moshiKotlinCodegen
 
     // Android runner and rules support
     androidTestImplementation(libraries.androidTestRunner) {
