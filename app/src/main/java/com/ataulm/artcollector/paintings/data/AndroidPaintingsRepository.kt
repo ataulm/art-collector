@@ -15,13 +15,13 @@ internal class AndroidPaintingsRepository @Inject constructor(
     override suspend fun paintings(): List<Painting> {
         return harvardArtMuseumApi.paintings().await()
                 .records
-                .filter { it.people?.find(whereApiPersonIsAnArtist) != null }
+                .filter { it.people?.find(whereApiPersonIsAKnownArtist) != null }
                 .map { it.toPainting() }
     }
 
     private fun ApiRecord.toPainting(): Painting {
-        val apiPerson = people!!.first(whereApiPersonIsAnArtist)
-        val artist = Artist(apiPerson.personId.toString(), apiPerson.displayName)
+        val apiPerson = people!!.first(whereApiPersonIsAKnownArtist)
+        val artist = Artist(apiPerson.personId.toString(), apiPerson.name)
         return Painting(
                 id.toString(),
                 title,
@@ -31,5 +31,7 @@ internal class AndroidPaintingsRepository @Inject constructor(
         )
     }
 
-    private val whereApiPersonIsAnArtist: (ApiPerson) -> Boolean = { it.role == "Artist" }
+    private val whereApiPersonIsAKnownArtist: (ApiPerson) -> Boolean = {
+        it.role == "Artist" && it.name != "Unknown Artist"
+    }
 }

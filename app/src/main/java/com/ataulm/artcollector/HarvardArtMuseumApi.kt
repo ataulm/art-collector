@@ -59,6 +59,6 @@ internal data class ApiRecord(
 @JsonClass(generateAdapter = true)
 internal data class ApiPerson(
         @Json(name = "personid") val personId: Int,
-        @Json(name = "displayname") val displayName: String,
+        @Json(name = "name") val name: String,
         @Json(name = "role") val role: String
 )
