@@ -1,7 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.novoda.build-properties'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+
+buildProperties {
+    harvard {
+        using rootProject.file('harvard.properties')
+    }
+}
 
 android {
     compileSdkVersion versions.androidSdk.compile
@@ -14,6 +21,8 @@ android {
         versionName '1.0'
 
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+
+        buildConfigString 'HARVARD_KEY', buildProperties.harvard['apiKey'].string
     }
     buildTypes {
         release {

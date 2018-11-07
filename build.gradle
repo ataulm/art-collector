@@ -9,6 +9,7 @@ buildscript {
     }
     dependencies {
         classpath libraries.build.androidGradle
+        classpath libraries.build.gradleBuildProperties
         classpath libraries.build.kotlinGradle
     }
 }
