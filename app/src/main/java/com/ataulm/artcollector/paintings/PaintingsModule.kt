@@ -2,6 +2,7 @@ package com.ataulm.artcollector.paintings
 
 import android.arch.lifecycle.ViewModelProviders
 import com.ataulm.artcollector.AddApiKeyQueryParameterInterceptor
+import com.ataulm.artcollector.BuildConfig
 import com.ataulm.artcollector.HarvardArtMuseumApi
 import com.ataulm.artcollector.paintings.data.AndroidPaintingsRepository
 import com.ataulm.artcollector.paintings.domain.PaintingsRepository
@@ -40,7 +41,7 @@ internal object PaintingsModule {
     fun harvardArtMuseumApi(activity: PaintingsActivity): HarvardArtMuseumApi {
         return Retrofit.Builder()
                 .client(OkHttpClient.Builder()
-                        .addNetworkInterceptor(AddApiKeyQueryParameterInterceptor("get an api key")) // TODO: pass this via buildconfig
+                        .addNetworkInterceptor(AddApiKeyQueryParameterInterceptor(BuildConfig.HARVARD_KEY))
                         .addInterceptor(ChuckInterceptor(activity))
                         .build())
                 .baseUrl(HarvardArtMuseumApi.ENDPOINT)
