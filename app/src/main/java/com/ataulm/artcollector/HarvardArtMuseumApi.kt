@@ -9,7 +9,7 @@ import retrofit2.http.GET
 
 internal interface HarvardArtMuseumApi {
 
-    @GET("object?$PAINTINGS_&$WITH_IMAGES_&$INC_FIELDS")
+    @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_&$INC_FIELDS")
     fun paintings(): Deferred<ApiResponse>
 
     companion object {
@@ -17,7 +17,8 @@ internal interface HarvardArtMuseumApi {
         const val ENDPOINT = "https://api.harvardartmuseums.org"
         private const val PAINTINGS_ = "classification=26"
         private const val WITH_IMAGES_ = "hasimage=1"
-        private const val INC_FIELDS = "fields=id,title,description,primaryimageurl"
+        private const val WITH_ARTIST_ = "q=people.role:Artist"
+        private const val INC_FIELDS = "fields=id,title,description,primaryimageurl,people"
     }
 }
 
@@ -52,5 +53,13 @@ internal data class ApiRecord(
         @Json(name = "id") val id: Int,
         @Json(name = "title") val title: String,
         @Json(name = "description") val description: String?,
-        @Json(name = "primaryimageurl") val primaryImageUrl: String
+        @Json(name = "primaryimageurl") val primaryImageUrl: String,
+        @Json(name = "people") val people: List<ApiPerson>
+)
+
+@JsonClass(generateAdapter = true)
+internal data class ApiPerson(
+        @Json(name = "personid") val personId: Int,
+        @Json(name = "name") val name: String,
+        @Json(name = "role") val role: String
 )

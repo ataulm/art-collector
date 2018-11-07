@@ -30,6 +30,7 @@ internal class PaintingsAdapter constructor(
     internal class PaintingViewHolder(private val picasso: Picasso, view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(item: Painting) {
+            itemView.artistTextView.text = item.artist.name
             picasso.load(item.imageUrl).into(itemView.imageView)
         }
     }

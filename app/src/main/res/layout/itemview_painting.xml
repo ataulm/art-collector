@@ -10,4 +10,12 @@
         android:importantForAccessibility="no"
         android:scaleType="centerCrop" />
 
+    <TextView
+        android:id="@+id/artistTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        android:gravity="center_vertical" />
+
 </FrameLayout>
