@@ -1,6 +1,5 @@
 package com.ataulm.artcollector.paintings.data
 
-import com.ataulm.artcollector.ApiPerson
 import com.ataulm.artcollector.ApiRecord
 import com.ataulm.artcollector.HarvardArtMuseumApi
 import com.ataulm.artcollector.paintings.domain.Artist
@@ -14,26 +13,17 @@ internal class AndroidPaintingsRepository @Inject constructor(
 
     override suspend fun paintings(): List<Painting> {
         return harvardArtMuseumApi.paintings().await().records
-                .map { apiRecord ->
-                    apiRecord to apiRecord.people?.find(whereApiPersonIsAKnownArtist)
-                }
-                .mapNotNull { it.toPainting() }
+                .map { it.toPainting() }
     }
 
-    private val whereApiPersonIsAKnownArtist: (ApiPerson) -> Boolean = {
-        it.role == "Artist" && it.name != "Unknown Artist"
-    }
-
-    private fun Pair<ApiRecord, ApiPerson?>.toPainting(): Painting? {
-        val (apiRecord, apiPerson) = this
-        return apiPerson?.let {
-            Painting(
-                    apiRecord.id.toString(),
-                    apiRecord.title,
-                    apiRecord.description,
-                    apiRecord.primaryImageUrl,
-                    Artist(it.personId.toString(), it.name)
-            )
-        }
+    private fun ApiRecord.toPainting(): Painting {
+        val apiPerson = people.first()
+        return Painting(
+                id.toString(),
+                title,
+                description,
+                primaryImageUrl,
+                Artist(apiPerson.personId.toString(), apiPerson.name)
+        )
     }
 }
