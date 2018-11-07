@@ -1,14 +1,11 @@
 package com.ataulm.artcollector.paintings
 
-import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.ViewModelProviders
 import com.ataulm.artcollector.AddApiKeyQueryParameterInterceptor
 import com.ataulm.artcollector.HarvardArtMuseumApi
 import com.ataulm.artcollector.paintings.data.AndroidPaintingsRepository
-import com.ataulm.artcollector.paintings.domain.Painting
 import com.ataulm.artcollector.paintings.domain.PaintingsRepository
 import com.ataulm.artcollector.paintings.ui.PaintingsActivity
-import com.ataulm.artcollector.paintings.ui.PaintingsLiveData
 import com.ataulm.artcollector.paintings.ui.PaintingsViewModel
 import com.ataulm.artcollector.paintings.ui.PaintingsViewModelFactory
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -19,7 +16,6 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-
 @Module
 internal object PaintingsModule {
 
@@ -27,12 +23,6 @@ internal object PaintingsModule {
     @Provides
     fun paintingsRepository(paintingsRepository: AndroidPaintingsRepository): PaintingsRepository {
         return paintingsRepository
-    }
-
-    @JvmStatic
-    @Provides
-    fun paintingsLiveData(paintingsLiveData: PaintingsLiveData): LiveData<List<Painting>> {
-        return paintingsLiveData
     }
 
     @JvmStatic
