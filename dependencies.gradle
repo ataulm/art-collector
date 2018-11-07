@@ -15,8 +15,9 @@ ext {
 
     libraries = [
             build                         : [
-                    androidGradle: 'com.android.tools.build:gradle:3.3.0-alpha03',
-                    kotlinGradle : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+                    androidGradle        : 'com.android.tools.build:gradle:3.3.0-alpha03',
+                    gradleBuildProperties: 'com.novoda:gradle-build-properties-plugin:0.4.1',
+                    kotlinGradle         : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
             ],
             androidArchLifecycleExtensions: 'android.arch.lifecycle:extensions:1.1.1',
             androidTestRules              : "com.android.support.test:rules:${versions.supportTest}",
