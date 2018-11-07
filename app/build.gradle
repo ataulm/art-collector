@@ -36,6 +36,7 @@ dependencies {
     implementation libraries.kotlinCoroutinesCore
     implementation libraries.kotlinStdLib
     implementation libraries.moshi
+    implementation libraries.picasso3
     implementation libraries.retrofit
     implementation libraries.retrofitMoshi
     implementation libraries.retrofitKotlinCoroutines

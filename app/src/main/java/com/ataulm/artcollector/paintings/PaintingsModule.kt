@@ -10,6 +10,7 @@ import com.ataulm.artcollector.paintings.ui.PaintingsViewModel
 import com.ataulm.artcollector.paintings.ui.PaintingsViewModelFactory
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.readystatesoftware.chuck.ChuckInterceptor
+import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -29,6 +30,10 @@ internal object PaintingsModule {
     @Provides
     fun viewModel(activity: PaintingsActivity, viewModelFactory: PaintingsViewModelFactory) =
             ViewModelProviders.of(activity, viewModelFactory).get(PaintingsViewModel::class.java)
+
+    @JvmStatic
+    @Provides
+    fun picasso(activity: PaintingsActivity) = Picasso.Builder(activity).build()
 
     @JvmStatic
     @Provides
