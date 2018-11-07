@@ -13,25 +13,27 @@ internal class AndroidPaintingsRepository @Inject constructor(
 ) : PaintingsRepository {
 
     override suspend fun paintings(): List<Painting> {
-        return harvardArtMuseumApi.paintings().await()
-                .records
-                .filter { it.people?.find(whereApiPersonIsAKnownArtist) != null }
-                .map { it.toPainting() }
-    }
-
-    private fun ApiRecord.toPainting(): Painting {
-        val apiPerson = people!!.first(whereApiPersonIsAKnownArtist)
-        val artist = Artist(apiPerson.personId.toString(), apiPerson.name)
-        return Painting(
-                id.toString(),
-                title,
-                description,
-                primaryImageUrl,
-                artist
-        )
+        return harvardArtMuseumApi.paintings().await().records
+                .map { apiRecord ->
+                    apiRecord to apiRecord.people?.find(whereApiPersonIsAKnownArtist)
+                }
+                .mapNotNull { it.toPainting() }
     }
 
     private val whereApiPersonIsAKnownArtist: (ApiPerson) -> Boolean = {
         it.role == "Artist" && it.name != "Unknown Artist"
+    }
+
+    private fun Pair<ApiRecord, ApiPerson?>.toPainting(): Painting? {
+        val (apiRecord, apiPerson) = this
+        return apiPerson?.let {
+            Painting(
+                    apiRecord.id.toString(),
+                    apiRecord.title,
+                    apiRecord.description,
+                    apiRecord.primaryImageUrl,
+                    Artist(it.personId.toString(), it.name)
+            )
+        }
     }
 }
