@@ -1,0 +1,9 @@
+<manifest xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="com.ataulm.artcollector">
+
+    <dist:module
+        dist:onDemand="false"
+        dist:title="@string/title_gallery">
+        <dist:fusing dist:include="true" />
+    </dist:module>
+</manifest>
