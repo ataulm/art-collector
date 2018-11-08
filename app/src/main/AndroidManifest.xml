@@ -10,11 +10,11 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".paintings.ui.PaintingsActivity" />
+        <activity android:name=".TemporaryHomeActivity" />
 
         <activity-alias
             android:name="activity.primary_launcher"
-            android:targetActivity=".paintings.ui.PaintingsActivity">
+            android:targetActivity=".TemporaryHomeActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

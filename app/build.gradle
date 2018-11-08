@@ -34,7 +34,7 @@ android {
                     'proguard-rules-retrofit.pro'
         }
     }
-    dynamicFeatures = [':gallery']
+    dynamicFeatures = [':paintings']
 }
 
 dependencies {
