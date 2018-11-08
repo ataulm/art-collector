@@ -1,26 +1,31 @@
 art collector
 =============
 
-https://github.com/harvardartmuseums/api-docs
-
-Add `harvard.properties` to the project root:
-
-```
-apiKey=YOUR_API_KEY_HERE
-```
-
-#### Aim
-**tiny** modularised app, showcasing applinks, deeplinks and instant apps.
+art collector displays a selection of paintings from the [Harvard Art Museum API](https://github.com/harvardartmuseums/api-docs).
 
 We need three screens:
 
 - `/` showing a collection of paintings
-- `artist/{person_id}` showing a single artist and their work
-- `piece/{object_id}` showing a single piece
+- `/artist/{person_id}` showing the collection of paintings by the given artist
+- `/artist/{person_id}/{object_id}` showing a single painting
 
-#### Current state (inc. next steps if applicable)
+## Why
 
-- Added Dagger in the `paintings` package
-- Using coroutines to fetch and display a list of paintings in the activity
-- the `paintings` package should move into its own feature module, but can wait until adding another
-feature
+The aim is to develop a small app so I can learn about:
+
+- Coroutines
+- Dagger 2
+- Room (or perhaps Realm, then Realm to Room migration)
+- Dynamic feature modules
+
+I'll keep meaningful changes restricted to PRs, and will try to keep them small and well documented. Please comment on the PRs if you have any questions/suggestions.
+
+## Building the app
+
+To build the app, you'll need to add `harvard.properties` to the project root with your API key substituted:
+
+```
+apiKey=123abc456def
+```
+
+[Thanks for the name.](https://github.com/florina-muntenescu)
