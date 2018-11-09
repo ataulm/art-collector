@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">art collector</string>
+    <string name="title_painting">Module Title</string>
 </resources>

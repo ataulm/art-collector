@@ -1,6 +1,5 @@
 package com.ataulm.artcollector
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
@@ -13,16 +12,5 @@ class TemporaryHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         startActivity(Navigation.PAINTINGS.viewIntent())
-    }
-}
-
-enum class Navigation(private val semiQualifiedActivityName: String) {
-
-    PAINTINGS("paintings.ui.PaintingsActivity");
-
-    fun viewIntent(): Intent {
-        val componentName = "${BuildConfig.APPLICATION_ID}.$semiQualifiedActivityName"
-        return Intent(Intent.ACTION_VIEW)
-                .setClassName(BuildConfig.APPLICATION_ID, componentName)
     }
 }

@@ -1,2 +1,3 @@
 include ':app'
-include ':paintings'
+include ':painting'
+include ':paintings' // TODO: this one should be consumed by `app`

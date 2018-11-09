@@ -3,6 +3,7 @@ package com.ataulm.artcollector.paintings.ui
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import com.ataulm.artcollector.Event
 import com.ataulm.artcollector.paintings.domain.GetPaintingsUseCase
 import com.ataulm.artcollector.paintings.domain.Painting
 import kotlinx.coroutines.CoroutineScope
@@ -19,6 +20,10 @@ internal class PaintingsViewModel @Inject constructor(
     private val _paintings = MutableLiveData<List<Painting>>()
     val paintings: LiveData<List<Painting>> = _paintings
 
+    private val _events = MutableLiveData<Event<NavigateToPainting>>()
+    val events: LiveData<Event<NavigateToPainting>>
+        get() = _events
+
     private val parentJob = Job()
     private val coroutineScope = CoroutineScope(parentJob)
 
@@ -29,8 +34,14 @@ internal class PaintingsViewModel @Inject constructor(
         }
     }
 
+    fun onClick(painting: Painting) {
+        _events.value = Event(NavigateToPainting(painting))
+    }
+
     override fun onCleared() {
         super.onCleared()
         parentJob.cancel()
     }
 }
+
+internal data class NavigateToPainting(val painting: Painting)

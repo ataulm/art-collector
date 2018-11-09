@@ -6,11 +6,15 @@ import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface HarvardArtMuseumApi {
 
     @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_&$INC_FIELDS")
-    fun paintings(): Deferred<ApiResponse>
+    fun paintings(): Deferred<ApiPaintingsResponse>
+
+    @GET("object/{object_id}")
+    fun painting(@Path("object_id") id: String): Deferred<ApiRecord>
 
     companion object {
 
@@ -34,7 +38,7 @@ internal class AddApiKeyQueryParameterInterceptor(private val apiKey: String) : 
 }
 
 @JsonClass(generateAdapter = true)
-data class ApiResponse(
+data class ApiPaintingsResponse(
         @Json(name = "info") val info: ApiInfo,
         @Json(name = "records") val records: List<ApiRecord>
 )
