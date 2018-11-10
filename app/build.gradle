@@ -34,25 +34,27 @@ android {
                     'proguard-rules-retrofit.pro'
         }
     }
+    dynamicFeatures = [':paintings']
 }
 
 dependencies {
-    implementation libraries.androidArchLifecycleExtensions
+    api libraries.androidArchLifecycleExtensions
+    api libraries.dagger
+    api libraries.kotlinCoroutinesAndroid
+    api libraries.kotlinCoroutinesCore
+    api libraries.kotlinStdLib
+    api libraries.picasso3
+    api libraries.supportAppCompatV7
+    api libraries.supportDesign
+    api libraries.supportRecyclerView
+    api libraries.supportV13
+
     debugImplementation libraries.chuck
     releaseImplementation libraries.chuckNoOp
-    implementation libraries.dagger
-    implementation libraries.kotlinCoroutinesAndroid
-    implementation libraries.kotlinCoroutinesCore
-    implementation libraries.kotlinStdLib
     implementation libraries.moshi
-    implementation libraries.picasso3
     implementation libraries.retrofit
     implementation libraries.retrofitMoshi
     implementation libraries.retrofitKotlinCoroutines
-    implementation libraries.supportAppCompatV7
-    implementation libraries.supportDesign
-    implementation libraries.supportRecyclerView
-    implementation libraries.supportV13
 
     kapt libraries.daggerAndroid
     kapt libraries.daggerCompiler

@@ -7,7 +7,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import retrofit2.http.GET
 
-internal interface HarvardArtMuseumApi {
+interface HarvardArtMuseumApi {
 
     @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_&$INC_FIELDS")
     fun paintings(): Deferred<ApiResponse>
@@ -34,13 +34,13 @@ internal class AddApiKeyQueryParameterInterceptor(private val apiKey: String) : 
 }
 
 @JsonClass(generateAdapter = true)
-internal data class ApiResponse(
+data class ApiResponse(
         @Json(name = "info") val info: ApiInfo,
         @Json(name = "records") val records: List<ApiRecord>
 )
 
 @JsonClass(generateAdapter = true)
-internal data class ApiInfo(
+data class ApiInfo(
         @Json(name = "totalrecordsperquery") val totalRecordsPerQuery: Int,
         @Json(name = "totalrecords") val totalRecords: Int,
         @Json(name = "pages") val pages: Int,
@@ -49,7 +49,7 @@ internal data class ApiInfo(
 )
 
 @JsonClass(generateAdapter = true)
-internal data class ApiRecord(
+data class ApiRecord(
         @Json(name = "id") val id: Int,
         @Json(name = "title") val title: String,
         @Json(name = "description") val description: String?,
@@ -58,7 +58,7 @@ internal data class ApiRecord(
 )
 
 @JsonClass(generateAdapter = true)
-internal data class ApiPerson(
+data class ApiPerson(
         @Json(name = "personid") val personId: Int,
         @Json(name = "name") val name: String,
         @Json(name = "role") val role: String
