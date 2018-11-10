@@ -3,8 +3,6 @@ package com.ataulm.artcollector.painting.ui
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.ataulm.artcollector.DataObserver
-import com.ataulm.artcollector.EventObserver
-import com.ataulm.artcollector.Navigation
 import com.ataulm.artcollector.painting.R
 import com.ataulm.artcollector.painting.domain.Painting
 import com.ataulm.artcollector.painting.domain.PaintingId
@@ -25,7 +23,9 @@ class PaintingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_painting)
 
-        val objectId = "143495" // TODO: get the objectid from the intent
+        val uri = intent.data!!
+        val objectId = uri.pathSegments.last()
+
         injectDependencies(PaintingId(objectId))
 
         viewModel.painting.observe(this, DataObserver<Painting> { painting ->

@@ -1,6 +1,7 @@
 package com.ataulm.artcollector
 
 import android.content.Intent
+import android.net.Uri
 
 enum class Navigation(private val semiQualifiedActivityName: String) {
 
@@ -8,9 +9,13 @@ enum class Navigation(private val semiQualifiedActivityName: String) {
     PAINTINGS("paintings.ui.PaintingsActivity");
 
     fun viewIntent(artistId: String, paintingId: String): Intent {
-        return viewIntent()
-                .putExtra("artistId", artistId)
-                .putExtra("paintingId", paintingId)
+        val uri = Uri.Builder()
+                .scheme("https://")
+                .authority("art-collector.ataulm.com")
+                .path("$artistId/$paintingId")
+                .build()
+
+        return viewIntent().setData(uri)
     }
 
     fun viewIntent(): Intent {

@@ -13,7 +13,7 @@ interface HarvardArtMuseumApi {
     @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_&$INC_FIELDS")
     fun paintings(): Deferred<ApiPaintingsResponse>
 
-    @GET("object/{object_id}")
+    @GET("object/{object_id}?$INC_FIELDS")
     fun painting(@Path("object_id") id: String): Deferred<ApiRecord>
 
     companion object {
@@ -57,7 +57,7 @@ data class ApiRecord(
         @Json(name = "id") val id: Int,
         @Json(name = "title") val title: String,
         @Json(name = "description") val description: String?,
-        @Json(name = "primaryimageurl") val primaryImageUrl: String,
+        @Json(name = "primaryimageurl") val primaryImageUrl: String?,
         @Json(name = "people") val people: List<ApiPerson>
 )
 
