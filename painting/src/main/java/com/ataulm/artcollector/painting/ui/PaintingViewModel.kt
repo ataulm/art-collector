@@ -16,8 +16,8 @@ internal class PaintingViewModel @Inject constructor(
         private val getPainting: GetPaintingUseCase
 ) : ViewModel() {
 
-    private val _paintings = MutableLiveData<Painting>()
-    val painting: LiveData<Painting> = _paintings
+    private val _painting = MutableLiveData<Painting>()
+    val painting: LiveData<Painting> = _painting
 
     private val parentJob = Job()
     private val coroutineScope = CoroutineScope(parentJob)
@@ -25,7 +25,7 @@ internal class PaintingViewModel @Inject constructor(
     init {
         coroutineScope.launch(Dispatchers.IO) {
             val paintings = getPainting()
-            withContext(Dispatchers.Main) { _paintings.value = paintings }
+            withContext(Dispatchers.Main) { _painting.value = paintings }
         }
     }
 
