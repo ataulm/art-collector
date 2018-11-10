@@ -1,4 +1,4 @@
-package com.ataulm.artcollector.paintings.ui
+package com.ataulm.artcollector.gallery.ui
 
 import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.util.DiffUtil
@@ -7,14 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ataulm.artcollector.R
-import com.ataulm.artcollector.paintings.domain.Painting
+import com.ataulm.artcollector.gallery.domain.Painting
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.itemview_painting.view.*
 
-internal class PaintingsAdapter constructor(
+internal class GalleryAdapter constructor(
         private val picasso: Picasso,
         private val onClick: (Painting) -> Unit
-) : ListAdapter<Painting, PaintingsAdapter.PaintingViewHolder>(PaintingDiffer) {
+) : ListAdapter<Painting, GalleryAdapter.PaintingViewHolder>(PaintingDiffer) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintingViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.itemview_painting, parent, false)

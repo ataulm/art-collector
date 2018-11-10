@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".paintings.ui.PaintingsActivity">
+        <activity android:name=".gallery.ui.GalleryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
@@ -18,7 +18,7 @@
 
         <activity-alias
             android:name="activity.primary_launcher"
-            android:targetActivity=".paintings.ui.PaintingsActivity">
+            android:targetActivity=".gallery.ui.GalleryActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

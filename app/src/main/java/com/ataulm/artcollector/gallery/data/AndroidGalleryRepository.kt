@@ -1,19 +1,21 @@
-package com.ataulm.artcollector.paintings.data
+package com.ataulm.artcollector.gallery.data
 
 import com.ataulm.artcollector.ApiRecord
 import com.ataulm.artcollector.HarvardArtMuseumApi
-import com.ataulm.artcollector.paintings.domain.Artist
-import com.ataulm.artcollector.paintings.domain.Painting
-import com.ataulm.artcollector.paintings.domain.PaintingsRepository
+import com.ataulm.artcollector.gallery.domain.Artist
+import com.ataulm.artcollector.gallery.domain.Gallery
+import com.ataulm.artcollector.gallery.domain.GalleryRepository
+import com.ataulm.artcollector.gallery.domain.Painting
 import javax.inject.Inject
 
-internal class AndroidPaintingsRepository @Inject constructor(
+internal class AndroidGalleryRepository @Inject constructor(
         private val harvardArtMuseumApi: HarvardArtMuseumApi
-) : PaintingsRepository {
+) : GalleryRepository {
 
-    override suspend fun paintings(): List<Painting> {
-        return harvardArtMuseumApi.paintings().await().records
+    override suspend fun gallery(): Gallery {
+        val paintings = harvardArtMuseumApi.gallery().await().records
                 .map { it.toPainting() }
+        return Gallery(paintings)
     }
 
     private fun ApiRecord.toPainting(): Painting {

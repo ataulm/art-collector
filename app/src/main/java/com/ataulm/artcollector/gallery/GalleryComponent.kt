@@ -1,21 +1,21 @@
-package com.ataulm.artcollector.paintings
+package com.ataulm.artcollector.gallery
 
 import com.ataulm.artcollector.ApplicationComponent
 import com.ataulm.artcollector.ArtCollectorApplication
-import com.ataulm.artcollector.paintings.ui.PaintingsActivity
+import com.ataulm.artcollector.gallery.ui.GalleryActivity
 import dagger.BindsInstance
 import dagger.Component
 
-@Component(modules = [PaintingsModule::class], dependencies = [ApplicationComponent::class])
+@Component(modules = [GalleryModule::class], dependencies = [ApplicationComponent::class])
 internal interface PaintingsComponent {
 
-    fun inject(activity: PaintingsActivity)
+    fun inject(activity: GalleryActivity)
 
     @Component.Builder
     interface Builder {
 
         @BindsInstance
-        fun activity(activity: PaintingsActivity): Builder
+        fun activity(activity: GalleryActivity): Builder
 
         fun withParent(component: ApplicationComponent): Builder
 
@@ -23,7 +23,7 @@ internal interface PaintingsComponent {
     }
 }
 
-internal fun PaintingsActivity.injectDependencies() {
+internal fun GalleryActivity.injectDependencies() {
     DaggerPaintingsComponent.builder()
             .withParent(ArtCollectorApplication.component(this))
             .activity(this)

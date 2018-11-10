@@ -5,8 +5,8 @@ import android.net.Uri
 
 enum class Navigation(private val semiQualifiedActivityName: String) {
 
-    PAINTING("painting.ui.PaintingActivity"),
-    PAINTINGS("paintings.ui.PaintingsActivity");
+    GALLERY("gallery.ui.GalleryActivity"),
+    PAINTING("painting.ui.PaintingActivity");
 
     fun viewIntent(artistId: String, paintingId: String): Intent {
         val uri = Uri.Builder()
@@ -15,12 +15,8 @@ enum class Navigation(private val semiQualifiedActivityName: String) {
                 .path("$artistId/$paintingId")
                 .build()
 
-        return viewIntent().setData(uri)
-    }
-
-    fun viewIntent(): Intent {
-        val componentName = "${BuildConfig.APPLICATION_ID}.$semiQualifiedActivityName"
         return Intent(Intent.ACTION_VIEW)
-                .setClassName(BuildConfig.APPLICATION_ID, componentName)
+                .setClassName(BuildConfig.APPLICATION_ID, "${BuildConfig.APPLICATION_ID}.$semiQualifiedActivityName")
+                .setData(uri)
     }
 }

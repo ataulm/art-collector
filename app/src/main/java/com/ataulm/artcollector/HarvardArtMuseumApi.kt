@@ -11,7 +11,7 @@ import retrofit2.http.Path
 interface HarvardArtMuseumApi {
 
     @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_&$INC_FIELDS")
-    fun paintings(): Deferred<ApiPaintingsResponse>
+    fun gallery(): Deferred<ApiPaintingsResponse>
 
     @GET("object/{object_id}?$INC_FIELDS")
     fun painting(@Path("object_id") id: String): Deferred<ApiRecord>

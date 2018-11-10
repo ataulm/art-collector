@@ -1,4 +1,6 @@
-package com.ataulm.artcollector.paintings.domain
+package com.ataulm.artcollector.gallery.domain
+
+internal class Gallery(collection: Collection<Painting>) : ArrayList<Painting>(collection)
 
 internal data class Painting(
         val id: String,
