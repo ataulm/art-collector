@@ -7,11 +7,15 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface HarvardArtMuseumApi {
 
     @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_&$INC_FIELDS")
     fun gallery(): Deferred<ApiPaintingsResponse>
+
+    @GET("object?$PAINTINGS_&$WITH_IMAGES_&$INC_FIELDS")
+    fun artistGallery(@Query("person") artistId: String): Deferred<ApiPaintingsResponse>
 
     @GET("object/{object_id}?$INC_FIELDS")
     fun painting(@Path("object_id") id: String): Deferred<ApiRecord>
@@ -49,7 +53,7 @@ data class ApiInfo(
         @Json(name = "totalrecords") val totalRecords: Int,
         @Json(name = "pages") val pages: Int,
         @Json(name = "page") val page: Int,
-        @Json(name = "next") val next: String
+        @Json(name = "next") val next: String?
 )
 
 @JsonClass(generateAdapter = true)
