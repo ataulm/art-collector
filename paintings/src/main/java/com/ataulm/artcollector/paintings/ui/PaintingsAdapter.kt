@@ -12,12 +12,13 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.itemview_painting.view.*
 
 internal class PaintingsAdapter constructor(
-        private val picasso: Picasso
+        private val picasso: Picasso,
+        private val onClick: (Painting) -> Unit
 ) : ListAdapter<Painting, PaintingsAdapter.PaintingViewHolder>(PaintingDiffer) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintingViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.itemview_painting, parent, false)
-        return PaintingViewHolder(picasso, view)
+        return PaintingViewHolder(picasso, onClick, view)
     }
 
     override fun onBindViewHolder(viewHolder: PaintingViewHolder, position: Int) = viewHolder.bind(getItem(position))
@@ -27,9 +28,14 @@ internal class PaintingsAdapter constructor(
         override fun areContentsTheSame(oldItem: Painting, newItem: Painting) = oldItem == newItem
     }
 
-    internal class PaintingViewHolder(private val picasso: Picasso, view: View) : RecyclerView.ViewHolder(view) {
+    internal class PaintingViewHolder(
+            private val picasso: Picasso,
+            private val onClick: (Painting) -> Unit,
+            view: View
+    ) : RecyclerView.ViewHolder(view) {
 
         fun bind(item: Painting) {
+            itemView.setOnClickListener { onClick(item) }
             itemView.artistTextView.text = item.artist.name
             picasso.load(item.imageUrl).into(itemView.imageView)
         }

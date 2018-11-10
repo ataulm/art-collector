@@ -4,6 +4,9 @@ import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import com.ataulm.artcollector.DataObserver
+import com.ataulm.artcollector.EventObserver
+import com.ataulm.artcollector.Navigation
 import com.ataulm.artcollector.paintings.R
 import com.ataulm.artcollector.paintings.domain.Painting
 import com.ataulm.artcollector.paintings.injectDependencies
@@ -24,14 +27,19 @@ class PaintingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_paintings)
 
-        val paintingsAdapter = PaintingsAdapter(picasso)
+        val paintingsAdapter = PaintingsAdapter(picasso) { viewModel.onClick(it) }
         recyclerView.apply {
             adapter = paintingsAdapter
             layoutManager = GridLayoutManager(this@PaintingsActivity, 2)
         }
 
-        viewModel.paintings.observe(this, Observer<List<Painting>> { paintings ->
-            paintings?.let { paintingsAdapter.submitList(it) }
+        viewModel.paintings.observe(this, DataObserver<List<Painting>> { paintings ->
+            paintingsAdapter.submitList(paintings)
+        })
+
+        viewModel.events.observe(this, EventObserver {
+            val painting = it.painting
+            startActivity(Navigation.PAINTING.viewIntent(painting.artist.id, painting.id))
         })
     }
 }
