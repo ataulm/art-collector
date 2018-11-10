@@ -8,4 +8,3 @@ internal class GetArtistGalleryUseCase @Inject constructor(
 
     suspend operator fun invoke() = repository.artistGallery()
 }
-
