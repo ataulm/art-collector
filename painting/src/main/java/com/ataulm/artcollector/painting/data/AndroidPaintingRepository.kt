@@ -1,6 +1,6 @@
 package com.ataulm.artcollector.painting.data
 
-import com.ataulm.artcollector.ApiRecord
+import com.ataulm.artcollector.ApiObjectRecord
 import com.ataulm.artcollector.HarvardArtMuseumApi
 import com.ataulm.artcollector.painting.domain.Artist
 import com.ataulm.artcollector.painting.domain.Painting
@@ -17,7 +17,7 @@ internal class AndroidPaintingRepository @Inject constructor(
         return harvardArtMuseumApi.painting(paintingId.value).await().toPainting()
     }
 
-    private fun ApiRecord.toPainting(): Painting {
+    private fun ApiObjectRecord.toPainting(): Painting {
         val apiPerson = people.first()
         return Painting(
                 id.toString(),

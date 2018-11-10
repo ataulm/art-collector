@@ -10,6 +10,9 @@ internal data class Painting(
         val artist: Artist
 )
 
-internal data class Artist(val id: String, val name: String)
+internal data class Artist(
+        val id: String,
+        val name: String
+)
 
 internal data class ArtistId(val value: String)

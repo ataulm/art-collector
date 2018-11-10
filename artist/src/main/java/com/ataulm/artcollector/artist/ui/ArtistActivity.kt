@@ -33,8 +33,9 @@ class ArtistActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(this@ArtistActivity, 2)
 
-        viewModel.gallery.observe(this, DataObserver<Gallery> { gallery ->
-            adapter.submitList(gallery)
+        viewModel.artistGallery.observe(this, DataObserver<ArtistGallery> { artistGallery ->
+            title = artistGallery.artist.name
+            adapter.submitList(artistGallery.gallery)
         })
 
         viewModel.events.observe(this, EventObserver {
