@@ -23,10 +23,8 @@ class PaintingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_painting)
 
-        val uri = intent.data!!
-        val objectId = uri.pathSegments.last()
-
-        injectDependencies(PaintingId(objectId))
+        val paintingId = intent.data!!.pathSegments.last()
+        injectDependencies(PaintingId(paintingId))
 
         viewModel.painting.observe(this, DataObserver<Painting> { painting ->
             picasso.load(painting.imageUrl).into(imageView)

@@ -1,0 +1,14 @@
+apply plugin: 'com.android.dynamic-feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion versions.androidSdk.compile
+}
+
+dependencies {
+    implementation project(':app')
+
+    kapt libraries.daggerCompiler
+}
