@@ -35,8 +35,6 @@ android {
         }
     }
     dynamicFeatures = [':paintings', ":painting"]
-
-
 }
 
 dependencies {
