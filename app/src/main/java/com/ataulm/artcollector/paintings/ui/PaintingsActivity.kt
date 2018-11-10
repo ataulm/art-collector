@@ -1,13 +1,12 @@
 package com.ataulm.artcollector.paintings.ui
 
-import android.arch.lifecycle.Observer
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.EventObserver
 import com.ataulm.artcollector.Navigation
-import com.ataulm.artcollector.paintings.R
+import com.ataulm.artcollector.R
 import com.ataulm.artcollector.paintings.domain.Painting
 import com.ataulm.artcollector.paintings.injectDependencies
 import com.squareup.picasso.Picasso
