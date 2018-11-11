@@ -27,6 +27,7 @@ class PaintingActivity : AppCompatActivity() {
         injectDependencies(PaintingId(paintingId))
 
         viewModel.painting.observe(this, DataObserver<Painting> { painting ->
+            title = painting.title
             picasso.load(painting.imageUrl).into(imageView)
         })
     }

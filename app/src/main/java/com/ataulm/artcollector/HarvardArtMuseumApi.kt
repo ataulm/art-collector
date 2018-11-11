@@ -14,11 +14,14 @@ interface HarvardArtMuseumApi {
     @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_&$INC_FIELDS")
     fun gallery(): Deferred<ApiPaintingsResponse>
 
+    @GET("person")
+    fun artist(@Query("q") qValue: String): Deferred<ApiPersonResponse>
+
     @GET("object?$PAINTINGS_&$WITH_IMAGES_&$INC_FIELDS")
     fun artistGallery(@Query("person") artistId: String): Deferred<ApiPaintingsResponse>
 
     @GET("object/{object_id}?$INC_FIELDS")
-    fun painting(@Path("object_id") id: String): Deferred<ApiRecord>
+    fun painting(@Path("object_id") id: String): Deferred<ApiObjectRecord>
 
     companion object {
 
@@ -44,7 +47,13 @@ internal class AddApiKeyQueryParameterInterceptor(private val apiKey: String) : 
 @JsonClass(generateAdapter = true)
 data class ApiPaintingsResponse(
         @Json(name = "info") val info: ApiInfo,
-        @Json(name = "records") val records: List<ApiRecord>
+        @Json(name = "records") val records: List<ApiObjectRecord>
+)
+
+@JsonClass(generateAdapter = true)
+data class ApiPersonResponse(
+        @Json(name = "info") val info: ApiInfo,
+        @Json(name = "records") val records: List<ApiPersonRecord>
 )
 
 @JsonClass(generateAdapter = true)
@@ -57,7 +66,13 @@ data class ApiInfo(
 )
 
 @JsonClass(generateAdapter = true)
-data class ApiRecord(
+data class ApiPersonRecord(
+        @Json(name = "personid") val personId: Int,
+        @Json(name = "displayname") val displayName: String
+)
+
+@JsonClass(generateAdapter = true)
+data class ApiObjectRecord(
         @Json(name = "id") val id: Int,
         @Json(name = "title") val title: String,
         @Json(name = "description") val description: String?,

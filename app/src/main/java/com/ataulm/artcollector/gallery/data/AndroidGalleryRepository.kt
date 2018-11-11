@@ -1,6 +1,6 @@
 package com.ataulm.artcollector.gallery.data
 
-import com.ataulm.artcollector.ApiRecord
+import com.ataulm.artcollector.ApiObjectRecord
 import com.ataulm.artcollector.HarvardArtMuseumApi
 import com.ataulm.artcollector.gallery.domain.Artist
 import com.ataulm.artcollector.gallery.domain.Gallery
@@ -18,7 +18,7 @@ internal class AndroidGalleryRepository @Inject constructor(
         return Gallery(paintings)
     }
 
-    private fun ApiRecord.toPainting(): Painting {
+    private fun ApiObjectRecord.toPainting(): Painting {
         val apiPerson = people.first()
         return Painting(
                 id.toString(),

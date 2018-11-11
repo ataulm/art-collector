@@ -1,6 +1,8 @@
 package com.ataulm.artcollector.artist.data
 
-import com.ataulm.artcollector.ApiRecord
+import com.ataulm.artcollector.ApiObjectRecord
+import com.ataulm.artcollector.ApiPerson
+import com.ataulm.artcollector.ApiPersonRecord
 import com.ataulm.artcollector.HarvardArtMuseumApi
 import com.ataulm.artcollector.artist.domain.Artist
 import com.ataulm.artcollector.artist.domain.ArtistId
@@ -14,20 +16,27 @@ internal class AndroidArtistRepository @Inject constructor(
         private val artistId: ArtistId
 ) : ArtistRepository {
 
+    override suspend fun artist(): Artist {
+        val qValue = "personid:${artistId.value}"
+        return harvardArtMuseumApi.artist(qValue).await().records.first().toArtist()
+    }
+
     override suspend fun artistGallery(): Gallery {
         val paintings = harvardArtMuseumApi.artistGallery(artistId.value).await().records
                 .map { it.toPainting() }
         return Gallery(paintings)
     }
 
-    private fun ApiRecord.toPainting(): Painting {
-        val apiPerson = people.first()
+    private fun ApiObjectRecord.toPainting(): Painting {
         return Painting(
                 id.toString(),
                 title,
                 description,
                 primaryImageUrl,
-                Artist(apiPerson.personId.toString(), apiPerson.name)
+                people.first().toArtist()
         )
     }
+
+    private fun ApiPerson.toArtist() = Artist(personId.toString(), name)
+    private fun ApiPersonRecord.toArtist() = Artist(personId.toString(), displayName)
 }
