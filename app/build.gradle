@@ -34,6 +34,14 @@ android {
                     'proguard-rules-retrofit.pro'
         }
     }
+    signingConfigs {
+        debug {
+            storeFile file('../debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
 
     dynamicFeatures = [':artist', ':painting']
 }
