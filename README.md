@@ -6,8 +6,8 @@ art collector displays a selection of paintings from the [Harvard Art Museum API
 We need three screens:
 
 - `/` showing a collection of paintings
-- `/artist/{person_id}` showing the collection of paintings by the given artist
-- `/artist/{person_id}/{object_id}` showing a single painting
+- `/{person_id}` showing the collection of paintings by the given artist
+- `/{person_id}/{object_id}` showing a single painting
 
 ## Why
 
