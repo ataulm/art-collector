@@ -27,7 +27,20 @@ android {
 
         buildConfigString 'HARVARD_KEY', buildProperties.harvard['apiKey'].string
     }
+
+    signingConfigs {
+        debug {
+            storeFile file(buildProperties.signingDebug['storeFile'].or('/absolute/path/to/keystore/file').string)
+            storePassword buildProperties.signingDebug['storePassword'].or('password').string
+            keyAlias buildProperties.signingDebug['keyAlias'].or('keyalias').string
+            keyPassword buildProperties.signingDebug['keyPassword'].or('keypassword').string
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'),
@@ -35,14 +48,6 @@ android {
                     'proguard-rules-moshi.pro',
                     'proguard-rules-moshi-kotlin.pro',
                     'proguard-rules-retrofit.pro'
-        }
-    }
-    signingConfigs {
-        debug {
-            storeFile file(buildProperties.signingDebug['storeFile'].or('/absolute/path/to/keystore/file').string)
-            storePassword buildProperties.signingDebug['storePassword'].or('password').string
-            keyAlias buildProperties.signingDebug['keyAlias'].or('keyalias').string
-            keyPassword buildProperties.signingDebug['keyPassword'].or('keypassword').string
         }
     }
 

@@ -21,6 +21,12 @@ android {
             keyPassword buildProperties.signingDebug['keyPassword'].or('keypassword').string
         }
     }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
 }
 
 dependencies {
