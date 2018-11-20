@@ -9,7 +9,9 @@
     </dist:module>
 
     <application>
-        <activity android:name=".ui.PaintingActivity">
+        <activity
+            android:name=".ui.PaintingActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
