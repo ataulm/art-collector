@@ -1,10 +1,32 @@
 apply plugin: 'com.android.dynamic-feature'
+apply plugin: 'com.novoda.build-properties'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
+buildProperties {
+    signingDebug {
+        using rootProject.file('signing-debug.properties')
+    }
+}
+
 android {
     compileSdkVersion versions.androidSdk.compile
+
+    signingConfigs {
+        debug {
+            storeFile file(buildProperties.signingDebug['storeFile'].or('/absolute/path/to/keystore/file').string)
+            storePassword buildProperties.signingDebug['storePassword'].or('password').string
+            keyAlias buildProperties.signingDebug['keyAlias'].or('keyalias').string
+            keyPassword buildProperties.signingDebug['keyPassword'].or('keypassword').string
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+    }
 }
 
 dependencies {
