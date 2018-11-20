@@ -9,6 +9,8 @@ private const val GALLERY = "${BuildConfig.APPLICATION_ID}.gallery.ui.GalleryAct
 private const val ARTIST_GALLERY = "${BuildConfig.APPLICATION_ID}.artist.ui.ArtistActivity"
 private const val PAINTING = "${BuildConfig.APPLICATION_ID}.painting.ui.PaintingActivity"
 
+fun webIntent(webUrl: String) = Intent(Intent.ACTION_VIEW).setData(Uri.parse(webUrl))
+
 fun galleryIntent() = intent(GALLERY)
 
 fun artistGalleryIntent(artistId: String): Intent {

@@ -3,7 +3,9 @@ package com.ataulm.artcollector.painting.domain
 internal data class Painting(
         val id: String,
         val title: String,
+        val webUrl: String,
         val description: String?,
+        val creditLine: String?,
         val imageUrl: String?, // nullable because https://github.com/harvardartmuseums/api-docs/issues/6
         val artist: Artist
 )

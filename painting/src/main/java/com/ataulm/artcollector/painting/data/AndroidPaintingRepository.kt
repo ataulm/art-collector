@@ -22,7 +22,9 @@ internal class AndroidPaintingRepository @Inject constructor(
         return Painting(
                 id.toString(),
                 title,
+                url,
                 description,
+                creditLine,
                 primaryImageUrl,
                 Artist(apiPerson.personId.toString(), apiPerson.name)
         )
