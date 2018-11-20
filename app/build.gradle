@@ -56,6 +56,7 @@ android {
 
 dependencies {
     api libraries.androidArchLifecycleExtensions
+    api libraries.constraintLayout
     api libraries.dagger
     api libraries.kotlinCoroutinesAndroid
     api libraries.kotlinCoroutinesCore

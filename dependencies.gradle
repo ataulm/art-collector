@@ -25,6 +25,7 @@ ext {
             androidTestRunner             : "com.android.support.test:runner:${versions.supportTest}",
             chuck                         : "com.readystatesoftware.chuck:library:${versions.chuck}",
             chuckNoOp                     : "com.readystatesoftware.chuck:library-no-op:${versions.chuck}",
+            constraintLayout              : 'com.android.support.constraint:constraint-layout:1.1.2',
             dagger                        : "com.google.dagger:dagger:${versions.dagger}",
             daggerAndroid                 : "com.google.dagger:dagger-android-processor:${versions.dagger}",
             daggerCompiler                : "com.google.dagger:dagger-compiler:${versions.dagger}",

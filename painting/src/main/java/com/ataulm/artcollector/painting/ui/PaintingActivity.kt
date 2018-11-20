@@ -7,6 +7,7 @@ import com.ataulm.artcollector.painting.R
 import com.ataulm.artcollector.painting.domain.Painting
 import com.ataulm.artcollector.painting.domain.PaintingId
 import com.ataulm.artcollector.painting.injectDependencies
+import com.ataulm.artcollector.webIntent
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_painting.*
 import javax.inject.Inject
@@ -28,6 +29,9 @@ class PaintingActivity : AppCompatActivity() {
 
         viewModel.painting.observe(this, DataObserver<Painting> { painting ->
             title = painting.title
+            titleArtistTextView.text = "${painting.title} // ${painting.artist.name}" // TODO: string format, but also PaintingUiModel
+            creditLineTextView.text = painting.creditLine ?: "Harvard Art Museum"
+            creditLineTextView.setOnClickListener { startActivity(webIntent(painting.webUrl)) }
             picasso.load(painting.imageUrl).into(imageView)
         })
     }
