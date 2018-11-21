@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.itemview_painting.view.*
 
 internal class GalleryAdapter constructor(
         private val picasso: Picasso,
-        private val onClick: (View, Painting) -> Unit,
+        private val onClick: (Painting, View) -> Unit,
         private val onClickArtist: (Artist) -> Unit
 ) : ListAdapter<Painting, GalleryAdapter.PaintingViewHolder>(PaintingDiffer) {
 
@@ -32,13 +32,13 @@ internal class GalleryAdapter constructor(
 
     internal class PaintingViewHolder(
             private val picasso: Picasso,
-            private val onClick: (View, Painting) -> Unit,
+            private val onClick: (Painting, View) -> Unit,
             private val onClickArtist: (Artist) -> Unit,
             view: View
     ) : RecyclerView.ViewHolder(view) {
 
         fun bind(item: Painting) {
-            itemView.setOnClickListener { onClick(itemView.imageView, item) }
+            itemView.setOnClickListener { onClick(item, itemView.imageView) }
             itemView.artistTextView.text = item.artist.name
             itemView.artistTextView.setOnClickListener { onClickArtist(item.artist) }
             picasso.load(item.imageUrl).into(itemView.imageView)

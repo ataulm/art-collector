@@ -45,23 +45,31 @@ class GalleryActivity : AppCompatActivity() {
             adapter.submitList(gallery)
         })
 
-        viewModel.events.observe(this, EventObserver {
-            val intent = when (it) {
-                is NavigateToArtistGallery -> artistGalleryIntent(it.artist.id)
-                is NavigateToPainting -> paintingIntent(it.painting.artist.id, it.painting.id)
+        viewModel.events.observe(this, EventObserver { command ->
+            when (command) {
+                is NavigateToArtistGallery -> navigateToArtistGallery(command)
+                is NavigateToPainting -> navigateToPainting(command)
             }
-            startActivity(intent)
         })
+    }
+
+    private fun navigateToArtistGallery(it: NavigateToArtistGallery) {
+        val intent = artistGalleryIntent(it.artist.id)
+        startActivity(intent)
+    }
+
+    private fun navigateToPainting(command: NavigateToPainting) {
+        val (painting, view) = command.painting to command.view
+        val sharedElement = Pair(view, getString(R.string.shared_element_painting))
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, sharedElement)
+        startActivity(paintingIntent(painting.artist.id, painting.id), options.toBundle())
     }
 
     private fun onClickArtist(): (Artist) -> Unit = { viewModel.onClickArtist(it) }
 
-    private fun onClickPainting(): (View, Painting) -> Unit {
-        return { imageView, painting ->
-            val sharedElement = Pair(imageView, getString(R.string.shared_element_painting))
-            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, sharedElement)
-            // TODO: navigation should be via the ViewModel
-            startActivity(paintingIntent(painting.artist.id, painting.id), options.toBundle())
+    private fun onClickPainting(): (Painting, View) -> Unit {
+        return { painting, view ->
+            viewModel.onClick(view, painting)
         }
     }
 }
