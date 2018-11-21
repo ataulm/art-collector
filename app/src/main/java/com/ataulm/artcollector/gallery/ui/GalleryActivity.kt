@@ -60,8 +60,8 @@ class GalleryActivity : AppCompatActivity() {
 
     private fun navigateToPainting(command: NavigateToPainting) {
         val (painting, view) = command.painting to command.view
-        val sharedElement = Pair(view, getString(R.string.shared_element_painting))
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, sharedElement)
+        val heroImage = Pair(view, getString(R.string.shared_element_painting))
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, heroImage)
         startActivity(paintingIntent(painting.artist.id, painting.id), options.toBundle())
     }
 

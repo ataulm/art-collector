@@ -8,6 +8,7 @@ import com.ataulm.artcollector.painting.domain.Painting
 import com.ataulm.artcollector.painting.domain.PaintingId
 import com.ataulm.artcollector.painting.injectDependencies
 import com.ataulm.artcollector.webIntent
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_painting.*
 import javax.inject.Inject
@@ -27,12 +28,19 @@ class PaintingActivity : AppCompatActivity() {
         val paintingId = intent.data!!.pathSegments.last()
         injectDependencies(PaintingId(paintingId))
 
+        // TODO: this is way too long to wait for a load, should pass the image url through as activity options
+        postponeEnterTransition()
         viewModel.painting.observe(this, DataObserver<Painting> { painting ->
             title = painting.title
             titleArtistTextView.text = "${painting.title} // ${painting.artist.name}" // TODO: string format, but also PaintingUiModel
             creditLineTextView.text = painting.creditLine ?: "Harvard Art Museum"
             creditLineTextView.setOnClickListener { startActivity(webIntent(painting.webUrl)) }
-            picasso.load(painting.imageUrl).into(imageView)
+            picasso.load(painting.imageUrl).into(imageView, startTransitionCallback)
         })
+    }
+
+    private val startTransitionCallback = object : Callback {
+        override fun onError(e: Exception?) = startPostponedEnterTransition()
+        override fun onSuccess() = startPostponedEnterTransition()
     }
 }
