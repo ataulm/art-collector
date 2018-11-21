@@ -1,13 +1,18 @@
 package com.ataulm.artcollector.gallery.ui
 
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
 import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.EventObserver
 import com.ataulm.artcollector.R
 import com.ataulm.artcollector.artistGalleryIntent
+import com.ataulm.artcollector.gallery.domain.Artist
 import com.ataulm.artcollector.gallery.domain.Gallery
+import com.ataulm.artcollector.gallery.domain.Painting
 import com.ataulm.artcollector.gallery.injectDependencies
 import com.ataulm.artcollector.paintingIntent
 import com.squareup.picasso.Picasso
@@ -29,8 +34,8 @@ class GalleryActivity : AppCompatActivity() {
 
         val adapter = GalleryAdapter(
                 picasso,
-                { viewModel.onClick(it) },
-                { viewModel.onClickArtist(it) }
+                onClickPainting(),
+                onClickArtist()
         )
 
         recyclerView.adapter = adapter
@@ -47,5 +52,16 @@ class GalleryActivity : AppCompatActivity() {
             }
             startActivity(intent)
         })
+    }
+
+    private fun onClickArtist(): (Artist) -> Unit = { viewModel.onClickArtist(it) }
+
+    private fun onClickPainting(): (View, Painting) -> Unit {
+        return { imageView, painting ->
+            val sharedElement = Pair(imageView, getString(R.string.shared_element_painting))
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, sharedElement)
+            // TODO: navigation should be via the ViewModel
+            startActivity(paintingIntent(painting.artist.id, painting.id), options.toBundle())
+        }
     }
 }
