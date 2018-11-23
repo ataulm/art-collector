@@ -34,8 +34,8 @@ class GalleryActivity : AppCompatActivity() {
 
         val adapter = GalleryAdapter(
                 glideRequestManager,
-                onClickPainting(),
-                onClickArtist()
+                onClickPainting,
+                onClickArtist
         )
 
         recyclerView.adapter = adapter
@@ -66,11 +66,9 @@ class GalleryActivity : AppCompatActivity() {
         startActivity(paintingIntent, options.toBundle())
     }
 
-    private fun onClickArtist(): (Artist) -> Unit = { viewModel.onClickArtist(it) }
+    private val onClickArtist: (Artist) -> Unit = { viewModel.onClickArtist(it) }
 
-    private fun onClickPainting(): (Painting, View) -> Unit {
-        return { painting, view ->
-            viewModel.onClick(view, painting)
-        }
+    private val onClickPainting: (Painting, View) -> Unit = { painting, view ->
+        viewModel.onClick(view, painting)
     }
 }
