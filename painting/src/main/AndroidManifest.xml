@@ -11,7 +11,7 @@
     <application>
         <activity
             android:name=".ui.PaintingActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar">
+            android:theme="@style/ArtCollector.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
