@@ -1,13 +1,13 @@
 package com.ataulm.artcollector
 
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.RequestManager
 import dagger.BindsInstance
 import dagger.Component
 
 @Component(modules = [ApplicationModule::class])
 interface ApplicationComponent {
 
-    fun picasso(): Picasso
+    fun glideRequestManager(): RequestManager
 
     fun harvardApiMuseumApi(): HarvardArtMuseumApi
 

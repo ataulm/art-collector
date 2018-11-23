@@ -7,10 +7,9 @@ import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.EventObserver
 import com.ataulm.artcollector.artist.R
 import com.ataulm.artcollector.artist.domain.ArtistId
-import com.ataulm.artcollector.artist.domain.Gallery
 import com.ataulm.artcollector.artist.injectDependencies
 import com.ataulm.artcollector.paintingIntent
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_artist.*
 import javax.inject.Inject
 
@@ -20,7 +19,7 @@ class ArtistActivity : AppCompatActivity() {
     internal lateinit var viewModel: ArtistViewModel
 
     @Inject
-    internal lateinit var picasso: Picasso
+    internal lateinit var glideRequestManager: RequestManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +28,7 @@ class ArtistActivity : AppCompatActivity() {
         val artistId = intent.data!!.pathSegments.last()
         injectDependencies(ArtistId(artistId))
 
-        val adapter = ArtistAdapter(picasso) { viewModel.onClick(it) }
+        val adapter = ArtistAdapter(glideRequestManager) { viewModel.onClick(it) }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = GridLayoutManager(this@ArtistActivity, 2)
 

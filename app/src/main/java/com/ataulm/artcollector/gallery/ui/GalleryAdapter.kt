@@ -9,18 +9,18 @@ import android.view.ViewGroup
 import com.ataulm.artcollector.R
 import com.ataulm.artcollector.gallery.domain.Artist
 import com.ataulm.artcollector.gallery.domain.Painting
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.itemview_painting.view.*
 
 internal class GalleryAdapter constructor(
-        private val picasso: Picasso,
+        private val glideRequestManager: RequestManager,
         private val onClick: (Painting, View) -> Unit,
         private val onClickArtist: (Artist) -> Unit
 ) : ListAdapter<Painting, GalleryAdapter.PaintingViewHolder>(PaintingDiffer) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintingViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.itemview_painting, parent, false)
-        return PaintingViewHolder(picasso, onClick, onClickArtist, view)
+        return PaintingViewHolder(glideRequestManager, onClick, onClickArtist, view)
     }
 
     override fun onBindViewHolder(viewHolder: PaintingViewHolder, position: Int) = viewHolder.bind(getItem(position))
@@ -31,7 +31,7 @@ internal class GalleryAdapter constructor(
     }
 
     internal class PaintingViewHolder(
-            private val picasso: Picasso,
+            private val glideRequestManager: RequestManager,
             private val onClick: (Painting, View) -> Unit,
             private val onClickArtist: (Artist) -> Unit,
             view: View
@@ -41,7 +41,9 @@ internal class GalleryAdapter constructor(
             itemView.setOnClickListener { onClick(item, itemView.imageView) }
             itemView.artistTextView.text = item.artist.name
             itemView.artistTextView.setOnClickListener { onClickArtist(item.artist) }
-            picasso.load(item.imageUrl).into(itemView.imageView)
+            glideRequestManager
+                    .load(item.imageUrl)
+                    .into(itemView.imageView)
         }
     }
 }

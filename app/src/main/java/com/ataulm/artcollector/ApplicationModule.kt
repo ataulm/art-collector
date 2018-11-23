@@ -1,8 +1,9 @@
 package com.ataulm.artcollector
 
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.readystatesoftware.chuck.ChuckInterceptor
-import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -14,7 +15,7 @@ object ApplicationModule {
 
     @JvmStatic
     @Provides
-    fun picasso(application: ArtCollectorApplication): Picasso = Picasso.Builder(application).build()
+    fun glideRequestManager(application: ArtCollectorApplication): RequestManager = Glide.with(application)
 
     @JvmStatic
     @Provides

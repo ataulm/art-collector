@@ -15,7 +15,7 @@ import com.ataulm.artcollector.gallery.domain.Gallery
 import com.ataulm.artcollector.gallery.domain.Painting
 import com.ataulm.artcollector.gallery.injectDependencies
 import com.ataulm.artcollector.paintingIntent
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_gallery.*
 import javax.inject.Inject
 
@@ -25,7 +25,7 @@ class GalleryActivity : AppCompatActivity() {
     internal lateinit var viewModel: PaintingsViewModel
 
     @Inject
-    internal lateinit var picasso: Picasso
+    internal lateinit var glideRequestManager: RequestManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injectDependencies()
@@ -33,7 +33,7 @@ class GalleryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_gallery)
 
         val adapter = GalleryAdapter(
-                picasso,
+                glideRequestManager,
                 onClickPainting(),
                 onClickArtist()
         )
@@ -60,9 +60,10 @@ class GalleryActivity : AppCompatActivity() {
 
     private fun navigateToPainting(command: NavigateToPainting) {
         val (painting, view) = command.painting to command.view
+        val paintingIntent = paintingIntent(painting.artist.id, painting.id, painting.imageUrl)
         val heroImage = Pair(view, getString(R.string.shared_element_painting))
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, heroImage)
-        startActivity(paintingIntent(painting.artist.id, painting.id), options.toBundle())
+        startActivity(paintingIntent, options.toBundle())
     }
 
     private fun onClickArtist(): (Artist) -> Unit = { viewModel.onClickArtist(it) }
