@@ -9,7 +9,10 @@ private const val GALLERY = "${BuildConfig.APPLICATION_ID}.gallery.ui.GalleryAct
 private const val ARTIST_GALLERY = "${BuildConfig.APPLICATION_ID}.artist.ui.ArtistActivity"
 private const val PAINTING = "${BuildConfig.APPLICATION_ID}.painting.ui.PaintingActivity"
 
-fun webIntent(webUrl: String) = Intent(Intent.ACTION_VIEW).setData(Uri.parse(webUrl))
+private const val INTENT_EXTRA_IMAGE_URL = "${BuildConfig.APPLICATION_ID}.IMAGE_URL"
+fun Intent.imageUrl(): String? = getStringExtra(INTENT_EXTRA_IMAGE_URL)
+
+fun webIntent(webUrl: String): Intent = Intent(Intent.ACTION_VIEW).setData(Uri.parse(webUrl))
 
 fun galleryIntent() = intent(GALLERY)
 
@@ -23,7 +26,7 @@ fun artistGalleryIntent(artistId: String): Intent {
     return intent(ARTIST_GALLERY, uri)
 }
 
-fun paintingIntent(artistId: String, paintingId: String): Intent {
+fun paintingIntent(artistId: String, paintingId: String, imageUrl: String? = null): Intent {
     val uri = Uri.Builder()
             .scheme(SCHEME)
             .authority(AUTHORITY)
@@ -31,6 +34,7 @@ fun paintingIntent(artistId: String, paintingId: String): Intent {
             .build()
 
     return intent(PAINTING, uri)
+            .putExtra(INTENT_EXTRA_IMAGE_URL, imageUrl)
 }
 
 private fun intent(componentName: String, uri: Uri? = null): Intent {

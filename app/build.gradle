@@ -58,10 +58,10 @@ dependencies {
     api libraries.androidArchLifecycleExtensions
     api libraries.constraintLayout
     api libraries.dagger
+    api libraries.glide
     api libraries.kotlinCoroutinesAndroid
     api libraries.kotlinCoroutinesCore
     api libraries.kotlinStdLib
-    api libraries.picasso3
     api libraries.supportAppCompatV7
     api libraries.supportDesign
     api libraries.supportRecyclerView

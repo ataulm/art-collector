@@ -1,8 +1,12 @@
 package com.ataulm.artcollector.gallery.ui
 
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.View
 import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.EventObserver
 import com.ataulm.artcollector.R
@@ -10,17 +14,18 @@ import com.ataulm.artcollector.artistGalleryIntent
 import com.ataulm.artcollector.gallery.domain.Gallery
 import com.ataulm.artcollector.gallery.injectDependencies
 import com.ataulm.artcollector.paintingIntent
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_gallery.*
+import kotlinx.android.synthetic.main.itemview_painting.view.*
 import javax.inject.Inject
 
 class GalleryActivity : AppCompatActivity() {
 
     @Inject
-    internal lateinit var viewModel: PaintingsViewModel
+    internal lateinit var viewModel: GalleryViewModel
 
     @Inject
-    internal lateinit var picasso: Picasso
+    internal lateinit var glideRequestManager: RequestManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injectDependencies()
@@ -28,9 +33,9 @@ class GalleryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_gallery)
 
         val adapter = GalleryAdapter(
-                picasso,
-                { viewModel.onClick(it) },
-                { viewModel.onClickArtist(it) }
+                glideRequestManager,
+                onClickPainting,
+                onClickArtist
         )
 
         recyclerView.adapter = adapter
@@ -40,12 +45,32 @@ class GalleryActivity : AppCompatActivity() {
             adapter.submitList(gallery)
         })
 
-        viewModel.events.observe(this, EventObserver {
-            val intent = when (it) {
-                is NavigateToArtistGallery -> artistGalleryIntent(it.artist.id)
-                is NavigateToPainting -> paintingIntent(it.painting.artist.id, it.painting.id)
+        viewModel.events.observe(this, EventObserver { command ->
+            when (command) {
+                is NavigateToArtistGallery -> navigateToArtistGallery(command)
+                is NavigateToPainting -> navigateToPainting(command)
             }
-            startActivity(intent)
         })
+    }
+
+    private val onClickArtist: (Int) -> Unit = { viewModel.onClickArtist(it) }
+
+    private val onClickPainting: (Int) -> Unit = { viewModel.onClick(it) }
+
+    private fun navigateToArtistGallery(it: NavigateToArtistGallery) {
+        val intent = artistGalleryIntent(it.artist.id)
+        startActivity(intent)
+    }
+
+    private fun navigateToPainting(command: NavigateToPainting) {
+        val (painting, adapterPosition) = command.painting to command.adapterPosition
+        val paintingIntent = paintingIntent(painting.artist.id, painting.id, painting.imageUrl)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, recyclerView.sharedElements(adapterPosition))
+        startActivity(paintingIntent, options.toBundle())
+    }
+
+    private fun RecyclerView.sharedElements(adapterPosition: Int): Pair<View, String> {
+        val itemView = layoutManager?.findViewByPosition(adapterPosition)!!
+        return Pair(itemView.imageView as View, getString(R.string.shared_element_painting))
     }
 }

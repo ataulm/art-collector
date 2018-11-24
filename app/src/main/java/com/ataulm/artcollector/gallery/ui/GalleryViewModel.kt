@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-internal class PaintingsViewModel @Inject constructor(
+internal class GalleryViewModel @Inject constructor(
         private val getGallery: GetGalleryUseCase
 ) : ViewModel() {
 
@@ -36,11 +36,13 @@ internal class PaintingsViewModel @Inject constructor(
         }
     }
 
-    fun onClick(painting: Painting) {
-        _events.value = Event(NavigateToPainting(painting))
+    fun onClick(adapterPosition: Int) {
+        val painting = _gallery.value!![adapterPosition]
+        _events.value = Event(NavigateToPainting(painting, adapterPosition))
     }
 
-    fun onClickArtist(artist: Artist) {
+    fun onClickArtist(adapterPosition: Int) {
+        val artist = _gallery.value!![adapterPosition].artist
         _events.value = Event(NavigateToArtistGallery(artist))
     }
 
@@ -51,5 +53,5 @@ internal class PaintingsViewModel @Inject constructor(
 }
 
 internal sealed class NavigateCommand
-internal data class NavigateToPainting(val painting: Painting) : NavigateCommand()
+internal data class NavigateToPainting(val painting: Painting, val adapterPosition: Int) : NavigateCommand()
 internal data class NavigateToArtistGallery(val artist: Artist) : NavigateCommand()
