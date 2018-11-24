@@ -62,6 +62,7 @@ dependencies {
     api libraries.kotlinCoroutinesAndroid
     api libraries.kotlinCoroutinesCore
     api libraries.kotlinStdLib
+    api libraries.photoView
     api libraries.supportAppCompatV7
     api libraries.supportDesign
     api libraries.supportRecyclerView
