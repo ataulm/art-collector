@@ -1,6 +1,6 @@
 package com.ataulm.artcollector.artist
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import com.ataulm.artcollector.artist.data.AndroidArtistRepository
 import com.ataulm.artcollector.artist.domain.ArtistRepository
 import com.ataulm.artcollector.artist.ui.ArtistActivity

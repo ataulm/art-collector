@@ -1,6 +1,6 @@
 package com.ataulm.artcollector
 
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 
 class EventObserver<T>(private val handleEvent: (T) -> Unit) : Observer<Event<T>> {
 

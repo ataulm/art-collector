@@ -1,6 +1,6 @@
 package com.ataulm.artcollector
 
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 
 class DataObserver<T>(private val handleData: (T) -> Unit) : Observer<T> {
 

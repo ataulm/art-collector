@@ -1,7 +1,7 @@
 package com.ataulm.artcollector.painting.ui
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.ataulm.artcollector.painting.domain.GetPaintingUseCase
 import javax.inject.Inject
 

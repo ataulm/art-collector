@@ -3,8 +3,8 @@ package com.ataulm.artcollector.painting.ui
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.imageUrl
 import com.ataulm.artcollector.painting.R
@@ -50,7 +50,7 @@ class PaintingActivity : AppCompatActivity() {
             painting.loadImageIfDifferent()
         })
 
-        imageView.setOnViewTapListener { _, _, _ ->
+        imageView.setOnClickListener {
             if (informationContainer.visibility == View.VISIBLE) {
                 informationContainer.visibility = View.GONE
             } else {

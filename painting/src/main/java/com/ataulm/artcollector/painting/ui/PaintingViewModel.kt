@@ -1,8 +1,8 @@
 package com.ataulm.artcollector.painting.ui
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.ataulm.artcollector.painting.domain.GetPaintingUseCase
 import com.ataulm.artcollector.painting.domain.Painting
 import kotlinx.coroutines.CoroutineScope
