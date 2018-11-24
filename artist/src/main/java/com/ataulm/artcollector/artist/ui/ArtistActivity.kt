@@ -1,8 +1,12 @@
 package com.ataulm.artcollector.artist.ui
 
 import android.os.Bundle
+import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.view.View
 import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.EventObserver
 import com.ataulm.artcollector.artist.R
@@ -11,6 +15,7 @@ import com.ataulm.artcollector.artist.injectDependencies
 import com.ataulm.artcollector.paintingIntent
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_artist.*
+import kotlinx.android.synthetic.main.itemview_artist_painting.view.*
 import javax.inject.Inject
 
 class ArtistActivity : AppCompatActivity() {
@@ -37,9 +42,16 @@ class ArtistActivity : AppCompatActivity() {
             adapter.submitList(artistGallery.gallery)
         })
 
-        viewModel.events.observe(this, EventObserver {
-            val painting = it.painting
-            startActivity(paintingIntent(painting.artist.id, painting.id))
+        viewModel.events.observe(this, EventObserver { command ->
+            val (painting, adapterPosition) = command.painting to command.adapterPosition
+            val paintingIntent = paintingIntent(painting.artist.id, painting.id, painting.imageUrl)
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, recyclerView.sharedElements(adapterPosition))
+            startActivity(paintingIntent, options.toBundle())
         })
+    }
+
+    private fun RecyclerView.sharedElements(adapterPosition: Int): Pair<View, String> {
+        val itemView = layoutManager?.findViewByPosition(adapterPosition)!!
+        return Pair(itemView.imageView as View, getString(com.ataulm.artcollector.R.string.shared_element_painting))
     }
 }

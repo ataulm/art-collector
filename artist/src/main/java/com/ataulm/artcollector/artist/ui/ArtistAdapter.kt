@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.itemview_artist_painting.view.*
 
 internal class ArtistAdapter constructor(
         private val glideRequestManager: RequestManager,
-        private val onClick: (Painting) -> Unit
+        private val onClick: (Int) -> Unit
 ) : ListAdapter<Painting, ArtistAdapter.PaintingViewHolder>(PaintingDiffer) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintingViewHolder {
@@ -30,12 +30,12 @@ internal class ArtistAdapter constructor(
 
     internal class PaintingViewHolder(
             private val glideRequestManager: RequestManager,
-            private val onClick: (Painting) -> Unit,
+            private val onClick: (Int) -> Unit,
             view: View
     ) : RecyclerView.ViewHolder(view) {
 
         fun bind(item: Painting) {
-            itemView.setOnClickListener { onClick(item) }
+            itemView.setOnClickListener { onClick(adapterPosition) }
             glideRequestManager.load(item.imageUrl).into(itemView.imageView)
         }
     }

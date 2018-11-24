@@ -50,8 +50,9 @@ internal class ArtistViewModel @Inject constructor(
         }
     }
 
-    fun onClick(painting: Painting) {
-        _events.value = Event(NavigateToPainting(painting))
+    fun onClick(adapterPosition: Int) {
+        val painting = _gallery.value!![adapterPosition]
+        _events.value = Event(NavigateToPainting(painting, adapterPosition))
     }
 
     override fun onCleared() {
@@ -60,7 +61,7 @@ internal class ArtistViewModel @Inject constructor(
     }
 }
 
-internal data class NavigateToPainting(val painting: Painting)
+internal data class NavigateToPainting(val painting: Painting, val adapterPosition: Int)
 
 internal data class ArtistGallery(val artist: Artist, val gallery: Gallery)
 
