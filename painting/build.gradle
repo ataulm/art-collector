@@ -12,7 +12,10 @@ buildProperties {
 
 android {
     compileSdkVersion versions.androidSdk.compile
-
+    defaultConfig {
+        minSdkVersion versions.androidSdk.min
+        targetSdkVersion versions.androidSdk.target
+    }
     signingConfigs {
         debug {
             storeFile file(buildProperties.signingDebug['storeFile'].or('/absolute/path/to/keystore/file').string)
