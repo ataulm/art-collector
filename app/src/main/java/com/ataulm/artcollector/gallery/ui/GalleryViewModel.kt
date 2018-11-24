@@ -3,7 +3,6 @@ package com.ataulm.artcollector.gallery.ui
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
-import android.view.View
 import com.ataulm.artcollector.Event
 import com.ataulm.artcollector.gallery.domain.Artist
 import com.ataulm.artcollector.gallery.domain.Gallery
@@ -37,8 +36,8 @@ internal class PaintingsViewModel @Inject constructor(
         }
     }
 
-    fun onClick(view: View, painting: Painting) {
-        _events.value = Event(NavigateToPainting(painting, view))
+    fun onClick(adapterPosition: Int, painting: Painting) {
+        _events.value = Event(NavigateToPainting(painting, adapterPosition))
     }
 
     fun onClickArtist(artist: Artist) {
@@ -52,5 +51,5 @@ internal class PaintingsViewModel @Inject constructor(
 }
 
 internal sealed class NavigateCommand
-internal data class NavigateToPainting(val painting: Painting, val view: View) : NavigateCommand()
+internal data class NavigateToPainting(val painting: Painting, val adapterPosition: Int) : NavigateCommand()
 internal data class NavigateToArtistGallery(val artist: Artist) : NavigateCommand()

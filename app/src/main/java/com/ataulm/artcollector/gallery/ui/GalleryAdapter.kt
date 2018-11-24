@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.itemview_painting.view.*
 
 internal class GalleryAdapter constructor(
         private val glideRequestManager: RequestManager,
-        private val onClick: (Painting, View) -> Unit,
+        private val onClick: (Painting, Int) -> Unit,
         private val onClickArtist: (Artist) -> Unit
 ) : ListAdapter<Painting, GalleryAdapter.PaintingViewHolder>(PaintingDiffer) {
 
@@ -32,13 +32,13 @@ internal class GalleryAdapter constructor(
 
     internal class PaintingViewHolder(
             private val glideRequestManager: RequestManager,
-            private val onClick: (Painting, View) -> Unit,
+            private val onClick: (Painting, Int) -> Unit,
             private val onClickArtist: (Artist) -> Unit,
             view: View
     ) : RecyclerView.ViewHolder(view) {
 
         fun bind(item: Painting) {
-            itemView.setOnClickListener { onClick(item, itemView.imageView) }
+            itemView.setOnClickListener { onClick(item, adapterPosition) }
             itemView.artistTextView.text = item.artist.name
             itemView.artistTextView.setOnClickListener { onClickArtist(item.artist) }
             glideRequestManager

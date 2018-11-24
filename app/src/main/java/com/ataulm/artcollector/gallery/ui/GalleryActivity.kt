@@ -5,6 +5,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.EventObserver
@@ -17,6 +18,7 @@ import com.ataulm.artcollector.gallery.injectDependencies
 import com.ataulm.artcollector.paintingIntent
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_gallery.*
+import kotlinx.android.synthetic.main.itemview_painting.view.*
 import javax.inject.Inject
 
 class GalleryActivity : AppCompatActivity() {
@@ -59,16 +61,20 @@ class GalleryActivity : AppCompatActivity() {
     }
 
     private fun navigateToPainting(command: NavigateToPainting) {
-        val (painting, view) = command.painting to command.view
+        val (painting, adapterPosition) = command.painting to command.adapterPosition
         val paintingIntent = paintingIntent(painting.artist.id, painting.id, painting.imageUrl)
-        val heroImage = Pair(view, getString(R.string.shared_element_painting))
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, heroImage)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, recyclerView.sharedElements(adapterPosition))
         startActivity(paintingIntent, options.toBundle())
     }
 
     private val onClickArtist: (Artist) -> Unit = { viewModel.onClickArtist(it) }
 
-    private val onClickPainting: (Painting, View) -> Unit = { painting, view ->
-        viewModel.onClick(view, painting)
+    private val onClickPainting: (Painting, Int) -> Unit = { painting, adapterPosition ->
+        viewModel.onClick(adapterPosition, painting)
+    }
+
+    private fun RecyclerView.sharedElements(adapterPosition: Int): Pair<View, String> {
+        val itemView = layoutManager?.findViewByPosition(adapterPosition)!!
+        return Pair(itemView.imageView as View, getString(R.string.shared_element_painting))
     }
 }
