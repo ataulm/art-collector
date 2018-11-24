@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.imageUrl
 import com.ataulm.artcollector.painting.R
@@ -44,8 +45,17 @@ class PaintingActivity : AppCompatActivity() {
             titleArtistTextView.text = "${painting.title} // ${painting.artist.name}" // TODO: string format, but also PaintingUiModel
             creditLineTextView.text = painting.creditLine ?: "Harvard Art Museum"
             creditLineTextView.setOnClickListener { startActivity(webIntent(painting.webUrl)) }
+            informationContainer.visibility = View.VISIBLE
             painting.loadImageIfDifferent()
         })
+
+        imageView.setOnViewTapListener { _, _, _ ->
+            if (informationContainer.visibility == View.VISIBLE) {
+                informationContainer.visibility = View.GONE
+            } else {
+                informationContainer.visibility = View.VISIBLE
+            }
+        }
     }
 
     private fun Intent.loadImageIfAvailable() {
