@@ -27,6 +27,8 @@ class PaintingActivity : AppCompatActivity() {
     @Inject
     internal lateinit var glideRequestManager: RequestManager
 
+    private var paintingImageViewTarget: Target<Drawable>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_painting)
@@ -48,7 +50,7 @@ class PaintingActivity : AppCompatActivity() {
 
     private fun Intent.loadImageIfAvailable() {
         imageUrl()?.let {
-            glideRequestManager
+            paintingImageViewTarget = glideRequestManager
                     .load(it)
                     .listener(startTransitionRequestListener)
                     .into(imageView)
@@ -56,8 +58,9 @@ class PaintingActivity : AppCompatActivity() {
     }
 
     private fun Painting.loadImageIfDifferent() {
-        if (imageUrl != null && intent.imageUrl() != imageUrl) {
-            glideRequestManager
+        if (imageUrl != null) {
+            paintingImageViewTarget?.request?.clear()
+            paintingImageViewTarget = glideRequestManager
                     .load(imageUrl)
                     .listener(startTransitionRequestListener)
                     .into(imageView)
