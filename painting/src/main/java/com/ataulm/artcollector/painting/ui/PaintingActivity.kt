@@ -42,8 +42,9 @@ class PaintingActivity : AppCompatActivity() {
         intent.loadImageIfAvailable()
         viewModel.painting.observe(this, DataObserver<Painting> { painting ->
             title = painting.title
-            titleArtistTextView.text = "${painting.title} // ${painting.artist.name}" // TODO: string format, but also PaintingUiModel
-            creditLineTextView.text = painting.creditLine ?: "Harvard Art Museum"
+            titleArtistTextView.text = getString(R.string.painting_title_artist, painting.title, painting.artist.name)
+            creditLineTextView.text = painting.creditLine?.let { getString(R.string.painting_credit, it) }
+                    ?: getString(R.string.painting_credit_fallback)
             creditLineTextView.setOnClickListener { startActivity(webIntent(painting.webUrl)) }
             informationContainer.visibility = View.VISIBLE
             painting.loadImageIfDifferent()
