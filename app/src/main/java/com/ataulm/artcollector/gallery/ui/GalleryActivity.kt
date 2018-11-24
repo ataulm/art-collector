@@ -22,7 +22,7 @@ import javax.inject.Inject
 class GalleryActivity : AppCompatActivity() {
 
     @Inject
-    internal lateinit var viewModel: PaintingsViewModel
+    internal lateinit var viewModel: GalleryViewModel
 
     @Inject
     internal lateinit var glideRequestManager: RequestManager

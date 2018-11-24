@@ -11,5 +11,5 @@ internal class GalleryViewModelFactory @Inject constructor(
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel?> create(modelClass: Class<T>) =
-            PaintingsViewModel(galleryUseCase) as T
+            GalleryViewModel(galleryUseCase) as T
 }

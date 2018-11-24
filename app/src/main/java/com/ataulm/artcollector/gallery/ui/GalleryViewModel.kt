@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-internal class PaintingsViewModel @Inject constructor(
+internal class GalleryViewModel @Inject constructor(
         private val getGallery: GetGalleryUseCase
 ) : ViewModel() {
 
