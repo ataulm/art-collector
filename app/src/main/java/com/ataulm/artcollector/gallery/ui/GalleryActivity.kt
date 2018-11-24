@@ -11,9 +11,7 @@ import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.EventObserver
 import com.ataulm.artcollector.R
 import com.ataulm.artcollector.artistGalleryIntent
-import com.ataulm.artcollector.gallery.domain.Artist
 import com.ataulm.artcollector.gallery.domain.Gallery
-import com.ataulm.artcollector.gallery.domain.Painting
 import com.ataulm.artcollector.gallery.injectDependencies
 import com.ataulm.artcollector.paintingIntent
 import com.bumptech.glide.RequestManager
@@ -55,6 +53,10 @@ class GalleryActivity : AppCompatActivity() {
         })
     }
 
+    private val onClickArtist: (Int) -> Unit = { viewModel.onClickArtist(it) }
+
+    private val onClickPainting: (Int) -> Unit = { viewModel.onClick(it) }
+
     private fun navigateToArtistGallery(it: NavigateToArtistGallery) {
         val intent = artistGalleryIntent(it.artist.id)
         startActivity(intent)
@@ -65,12 +67,6 @@ class GalleryActivity : AppCompatActivity() {
         val paintingIntent = paintingIntent(painting.artist.id, painting.id, painting.imageUrl)
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, recyclerView.sharedElements(adapterPosition))
         startActivity(paintingIntent, options.toBundle())
-    }
-
-    private val onClickArtist: (Artist) -> Unit = { viewModel.onClickArtist(it) }
-
-    private val onClickPainting: (Painting, Int) -> Unit = { painting, adapterPosition ->
-        viewModel.onClick(adapterPosition, painting)
     }
 
     private fun RecyclerView.sharedElements(adapterPosition: Int): Pair<View, String> {

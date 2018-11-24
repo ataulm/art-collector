@@ -36,11 +36,13 @@ internal class PaintingsViewModel @Inject constructor(
         }
     }
 
-    fun onClick(adapterPosition: Int, painting: Painting) {
+    fun onClick(adapterPosition: Int) {
+        val painting = _gallery.value!![adapterPosition]
         _events.value = Event(NavigateToPainting(painting, adapterPosition))
     }
 
-    fun onClickArtist(artist: Artist) {
+    fun onClickArtist(adapterPosition: Int) {
+        val artist = _gallery.value!![adapterPosition].artist
         _events.value = Event(NavigateToArtistGallery(artist))
     }
 

@@ -7,15 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ataulm.artcollector.R
-import com.ataulm.artcollector.gallery.domain.Artist
 import com.ataulm.artcollector.gallery.domain.Painting
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.itemview_painting.view.*
 
 internal class GalleryAdapter constructor(
         private val glideRequestManager: RequestManager,
-        private val onClick: (Painting, Int) -> Unit,
-        private val onClickArtist: (Artist) -> Unit
+        private val onClick: (Int) -> Unit,
+        private val onClickArtist: (Int) -> Unit
 ) : ListAdapter<Painting, GalleryAdapter.PaintingViewHolder>(PaintingDiffer) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintingViewHolder {
@@ -32,15 +31,15 @@ internal class GalleryAdapter constructor(
 
     internal class PaintingViewHolder(
             private val glideRequestManager: RequestManager,
-            private val onClick: (Painting, Int) -> Unit,
-            private val onClickArtist: (Artist) -> Unit,
+            private val onClick: (Int) -> Unit,
+            private val onClickArtist: (Int) -> Unit,
             view: View
     ) : RecyclerView.ViewHolder(view) {
 
         fun bind(item: Painting) {
-            itemView.setOnClickListener { onClick(item, adapterPosition) }
+            itemView.setOnClickListener { onClick(adapterPosition) }
             itemView.artistTextView.text = item.artist.name
-            itemView.artistTextView.setOnClickListener { onClickArtist(item.artist) }
+            itemView.artistTextView.setOnClickListener { onClickArtist(adapterPosition) }
             glideRequestManager
                     .load(item.imageUrl)
                     .into(itemView.imageView)
