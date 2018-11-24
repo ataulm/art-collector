@@ -34,7 +34,6 @@ class PaintingActivity : AppCompatActivity() {
         val paintingId = intent.data!!.pathSegments.last()
         injectDependencies(PaintingId(paintingId))
 
-        // TODO: check with app links that it still works and doesn't care about postponed transitions
         postponeEnterTransition()
 
         intent.loadImageIfAvailable()
