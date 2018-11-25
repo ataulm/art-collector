@@ -8,6 +8,7 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="192dp"
+        android:foreground="?selectableItemBackground"
         android:importantForAccessibility="no"
         android:scaleType="centerCrop"
         android:transitionName="@string/shared_element_painting" />
@@ -16,9 +17,10 @@
         android:id="@+id/artistTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:foreground="?selectableItemBackground"
         android:gravity="center_vertical"
         android:minHeight="48dp"
-        android:padding="8dp" />
+        android:padding="8dp"
+        android:textSize="16sp" />
 
 </LinearLayout>
