@@ -1,6 +1,5 @@
 package com.ataulm.artcollector.gallery.ui
 
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
