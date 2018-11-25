@@ -1,6 +1,13 @@
 <resources>
 
-  <style name="ArtCollector" parent="Theme.AppCompat.Light" />
-  <style name="ArtCollector.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar" />
+    <style name="ArtCollector" parent="Theme.AppCompat.Light">
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+
+    <style name="ArtCollector.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+    <style name="ArtCollector.Painting" parent="ArtCollector.NoActionBar">
+        <item name="android:windowBackground">@android:color/black</item>
+    </style>
 
 </resources>
