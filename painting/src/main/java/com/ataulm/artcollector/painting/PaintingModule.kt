@@ -1,6 +1,6 @@
 package com.ataulm.artcollector.painting
 
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProviders
 import com.ataulm.artcollector.painting.data.AndroidPaintingRepository
 import com.ataulm.artcollector.painting.domain.PaintingRepository
 import com.ataulm.artcollector.painting.ui.PaintingActivity

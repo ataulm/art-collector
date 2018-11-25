@@ -1,7 +1,7 @@
 package com.ataulm.artcollector
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 
 private const val ARTIST = 0
 private const val PAINTING = 1

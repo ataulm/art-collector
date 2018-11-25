@@ -1,9 +1,9 @@
 package com.ataulm.artcollector.artist.ui
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MediatorLiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.ataulm.artcollector.Event
 import com.ataulm.artcollector.artist.domain.Artist
 import com.ataulm.artcollector.artist.domain.Gallery

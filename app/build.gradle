@@ -23,7 +23,7 @@ android {
         versionCode 1
         versionName '1.0'
 
-        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         buildConfigString 'HARVARD_KEY', buildProperties.harvard['apiKey'].string
     }
@@ -55,18 +55,18 @@ android {
 }
 
 dependencies {
-    api libraries.androidArchLifecycleExtensions
-    api libraries.constraintLayout
+    api libraries.androidxAppCompat
+    api libraries.androidxConstraintLayout
+    api libraries.androidxLegacySupportV13
+    api libraries.androidxLifecycleExtensions
+    api libraries.androidxMaterial
+    api libraries.androidxRecyclerView
     api libraries.dagger
     api libraries.glide
     api libraries.kotlinCoroutinesAndroid
     api libraries.kotlinCoroutinesCore
     api libraries.kotlinStdLib
     api libraries.photoView
-    api libraries.supportAppCompatV7
-    api libraries.supportDesign
-    api libraries.supportRecyclerView
-    api libraries.supportV13
 
     debugImplementation libraries.chuck
     releaseImplementation libraries.chuckNoOp
@@ -79,19 +79,9 @@ dependencies {
     kapt libraries.daggerCompiler
     kapt libraries.moshiKotlinCodegen
 
-    // Android runner and rules support
-    androidTestImplementation(libraries.androidTestRunner) {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
-
-    androidTestImplementation(libraries.androidTestRules) {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
-
-    // Espresso support
-    androidTestImplementation(libraries.espressoCore) {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    }
+    androidTestImplementation libraries.androidxTestRules
+    androidTestImplementation libraries.androidxTestRunner
+    androidTestImplementation libraries.androidxEspressoCore
 
     testImplementation libraries.googleTruth
     testImplementation libraries.jUnit

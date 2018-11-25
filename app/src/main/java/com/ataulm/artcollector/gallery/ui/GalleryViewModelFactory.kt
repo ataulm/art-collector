@@ -1,7 +1,7 @@
 package com.ataulm.artcollector.gallery.ui
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.ataulm.artcollector.gallery.domain.GetGalleryUseCase
 import javax.inject.Inject
 
