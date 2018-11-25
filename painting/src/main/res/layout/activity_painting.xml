@@ -10,7 +10,6 @@
         android:id="@+id/imageView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:color/black"
         android:importantForAccessibility="no"
         android:scaleType="centerInside"
         android:transitionName="@string/shared_element_painting"

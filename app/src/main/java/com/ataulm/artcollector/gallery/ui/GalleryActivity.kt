@@ -5,7 +5,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.EventObserver
@@ -37,9 +36,8 @@ class GalleryActivity : AppCompatActivity() {
                 onClickPainting,
                 onClickArtist
         )
-
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(this@GalleryActivity, 2)
+        recyclerView.addItemDecoration(GallerySpacingItemDecoration(resources))
 
         viewModel.gallery.observe(this, DataObserver<Gallery> { gallery ->
             adapter.submitList(gallery)

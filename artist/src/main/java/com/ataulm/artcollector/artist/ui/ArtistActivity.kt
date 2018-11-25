@@ -1,17 +1,17 @@
 package com.ataulm.artcollector.artist.ui
 
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.view.View
 import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.EventObserver
 import com.ataulm.artcollector.artist.R
 import com.ataulm.artcollector.artist.domain.ArtistId
 import com.ataulm.artcollector.artist.injectDependencies
+import com.ataulm.artcollector.gallery.ui.GallerySpacingItemDecoration
 import com.ataulm.artcollector.paintingIntent
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_artist.*
@@ -35,7 +35,7 @@ class ArtistActivity : AppCompatActivity() {
 
         val adapter = ArtistAdapter(glideRequestManager) { viewModel.onClick(it) }
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = GridLayoutManager(this@ArtistActivity, 2)
+        recyclerView.addItemDecoration(GallerySpacingItemDecoration(resources))
 
         viewModel.artistGallery.observe(this, DataObserver<ArtistGallery> { artistGallery ->
             title = artistGallery.artist.name
