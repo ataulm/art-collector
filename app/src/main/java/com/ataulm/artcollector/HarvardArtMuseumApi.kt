@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface HarvardArtMuseumApi {
 
-    @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_&$INC_FIELDS")
+    @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_AND_ACCESS_TO_IMAGES_&$INC_FIELDS")
     fun gallery(): Deferred<ApiPaintingsResponse>
 
     @GET("person")
@@ -28,7 +28,7 @@ interface HarvardArtMuseumApi {
         const val ENDPOINT = "https://api.harvardartmuseums.org"
         private const val PAINTINGS_ = "classification=26"
         private const val WITH_IMAGES_ = "hasimage=1"
-        private const val WITH_ARTIST_ = "q=people.role:Artist AND imagepermissionlevel:0"
+        private const val WITH_ARTIST_AND_ACCESS_TO_IMAGES_ = "q=people.role:Artist AND imagepermissionlevel:0"
         private const val INC_FIELDS = "fields=id,title,description,primaryimageurl,people,url,creditline"
     }
 }
