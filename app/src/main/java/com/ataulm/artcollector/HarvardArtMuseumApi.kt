@@ -28,7 +28,7 @@ interface HarvardArtMuseumApi {
         const val ENDPOINT = "https://api.harvardartmuseums.org"
         private const val PAINTINGS_ = "classification=26"
         private const val WITH_IMAGES_ = "hasimage=1"
-        private const val WITH_ARTIST_ = "q=people.role:Artist"
+        private const val WITH_ARTIST_ = "q=people.role:Artist AND imagepermissionlevel:0"
         private const val INC_FIELDS = "fields=id,title,description,primaryimageurl,people,url,creditline"
     }
 }
@@ -78,7 +78,7 @@ data class ApiObjectRecord(
         @Json(name = "description") val description: String?,
         @Json(name = "url") val url: String,
         @Json(name = "creditline") val creditLine: String?,
-        @Json(name = "primaryimageurl") val primaryImageUrl: String?,
+        @Json(name = "primaryimageurl") val primaryImageUrl: String,
         @Json(name = "people") val people: List<ApiPerson>
 )
 
