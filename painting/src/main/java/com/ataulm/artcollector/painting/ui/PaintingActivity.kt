@@ -69,13 +69,11 @@ class PaintingActivity : AppCompatActivity() {
     }
 
     private fun Painting.loadImageIfDifferent() {
-        if (imageUrl != null) {
-            paintingImageViewTarget?.request?.clear()
-            paintingImageViewTarget = glideRequestManager
-                    .load(imageUrl)
-                    .listener(startTransitionRequestListener)
-                    .into(imageView)
-        }
+        paintingImageViewTarget?.request?.clear()
+        paintingImageViewTarget = glideRequestManager
+                .load(imageUrl)
+                .listener(startTransitionRequestListener)
+                .into(imageView)
     }
 
     private val startTransitionRequestListener = object : RequestListener<Drawable> {

@@ -6,7 +6,7 @@ internal data class Painting(
         val id: String,
         val title: String,
         val description: String?,
-        val imageUrl: String?, // nullable because https://github.com/harvardartmuseums/api-docs/issues/6
+        val imageUrl: String,
         val artist: Artist
 )
 
