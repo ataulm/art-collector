@@ -28,8 +28,6 @@ class PaintingActivity : AppCompatActivity() {
     @Inject
     internal lateinit var glideRequestManager: RequestManager
 
-    private var paintingImageViewTarget: Target<Drawable>? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_painting)
@@ -61,19 +59,19 @@ class PaintingActivity : AppCompatActivity() {
 
     private fun Intent.loadImageIfAvailable() {
         imageUrl()?.let {
-            paintingImageViewTarget = glideRequestManager
-                    .load(it)
+            glideRequestManager.load(it)
                     .listener(startTransitionRequestListener)
                     .into(imageView)
         }
     }
 
     private fun Painting.loadImageIfDifferent() {
-        paintingImageViewTarget?.request?.clear()
-        paintingImageViewTarget = glideRequestManager
-                .load(imageUrl)
-                .listener(startTransitionRequestListener)
-                .into(imageView)
+        if (imageUrl != intent.imageUrl()) {
+            glideRequestManager.clear(imageView)
+            glideRequestManager.load(imageUrl)
+                    .listener(startTransitionRequestListener)
+                    .into(imageView)
+        }
     }
 
     private val startTransitionRequestListener = object : RequestListener<Drawable> {
