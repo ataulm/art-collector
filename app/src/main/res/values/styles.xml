@@ -2,9 +2,12 @@
 
     <style name="ArtCollector" parent="Theme.AppCompat.Light">
         <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowSharedElementsUseOverlay">false</item>
     </style>
 
-    <style name="ArtCollector.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar"/>
+    <style name="ArtCollector.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowSharedElementsUseOverlay">false</item>
+    </style>
 
     <style name="ArtCollector.Painting" parent="ArtCollector.NoActionBar">
         <item name="android:windowBackground">@android:color/black</item>
