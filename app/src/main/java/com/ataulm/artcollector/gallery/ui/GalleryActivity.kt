@@ -6,13 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import androidx.recyclerview.widget.RecyclerView
-import com.ataulm.artcollector.DataObserver
-import com.ataulm.artcollector.EventObserver
-import com.ataulm.artcollector.R
-import com.ataulm.artcollector.artistGalleryIntent
-import com.ataulm.artcollector.domain.Gallery
+import com.ataulm.artcollector.*
 import com.ataulm.artcollector.gallery.injectDependencies
-import com.ataulm.artcollector.paintingIntent
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_gallery.*
 import kotlinx.android.synthetic.main.itemview_painting.view.*
@@ -39,7 +34,7 @@ class GalleryActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(GallerySpacingItemDecoration(resources))
 
-        viewModel.gallery.observe(this, DataObserver<Gallery> { gallery ->
+        viewModel.gallery.observe(this, DataObserver<UiGallery> { gallery ->
             adapter.submitList(gallery)
         })
 
@@ -56,13 +51,13 @@ class GalleryActivity : AppCompatActivity() {
     private val onClickPainting: (Int) -> Unit = { viewModel.onClick(it) }
 
     private fun navigateToArtistGallery(it: NavigateToArtistGallery) {
-        val intent = artistGalleryIntent(it.artist.id)
+        val intent = artistGalleryIntent(it.artistId)
         startActivity(intent)
     }
 
     private fun navigateToPainting(command: NavigateToPainting) {
         val (painting, adapterPosition) = command.painting to command.adapterPosition
-        val paintingIntent = paintingIntent(painting.artist.id, painting.id, painting.imageUrl)
+        val paintingIntent = paintingIntent(painting.artistId, painting.id, painting.imageUrl)
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, recyclerView.sharedElements(adapterPosition))
         startActivity(paintingIntent, options.toBundle())
     }

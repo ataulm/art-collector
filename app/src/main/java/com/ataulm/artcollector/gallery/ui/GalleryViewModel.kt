@@ -4,23 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ataulm.artcollector.Event
-import com.ataulm.artcollector.domain.Artist
-import com.ataulm.artcollector.domain.Gallery
 import com.ataulm.artcollector.gallery.domain.GetGalleryUseCase
-import com.ataulm.artcollector.domain.Painting
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 internal class GalleryViewModel @Inject constructor(
         private val getGallery: GetGalleryUseCase
 ) : ViewModel() {
 
-    private val _gallery = MutableLiveData<Gallery>()
-    val gallery: LiveData<Gallery> = _gallery
+    private val _gallery = MutableLiveData<UiGallery>()
+    val gallery: LiveData<UiGallery> = _gallery
 
     private val _events = MutableLiveData<Event<NavigateCommand>>()
     val events: LiveData<Event<NavigateCommand>>
@@ -32,7 +25,17 @@ internal class GalleryViewModel @Inject constructor(
     init {
         coroutineScope.launch(Dispatchers.IO) {
             val gallery = getGallery()
-            withContext(Dispatchers.Main) { _gallery.value = gallery }
+            val paintingUis = gallery.map { painting ->
+                UiPainting(
+                        painting.id,
+                        painting.title,
+                        painting.imageUrl,
+                        painting.artist.id,
+                        painting.artist.name
+                )
+            }
+            val uiGallery = UiGallery(paintingUis)
+            withContext(Dispatchers.Main) { _gallery.value = uiGallery }
         }
     }
 
@@ -42,7 +45,7 @@ internal class GalleryViewModel @Inject constructor(
     }
 
     fun onClickArtist(adapterPosition: Int) {
-        val artist = _gallery.value!![adapterPosition].artist
+        val artist = _gallery.value!![adapterPosition].artistId
         _events.value = Event(NavigateToArtistGallery(artist))
     }
 
@@ -53,5 +56,5 @@ internal class GalleryViewModel @Inject constructor(
 }
 
 internal sealed class NavigateCommand
-internal data class NavigateToPainting(val painting: Painting, val adapterPosition: Int) : NavigateCommand()
-internal data class NavigateToArtistGallery(val artist: Artist) : NavigateCommand()
+internal data class NavigateToPainting(val painting: UiPainting, val adapterPosition: Int) : NavigateCommand()
+internal data class NavigateToArtistGallery(val artistId: String) : NavigateCommand()
