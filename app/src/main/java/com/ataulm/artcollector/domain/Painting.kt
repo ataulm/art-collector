@@ -1,6 +1,6 @@
-package com.ataulm.artcollector.painting.domain
+package com.ataulm.artcollector.domain
 
-internal data class Painting(
+data class Painting(
         val id: String,
         val title: String,
         val webUrl: String,
@@ -9,7 +9,3 @@ internal data class Painting(
         val imageUrl: String,
         val artist: Artist
 )
-
-internal data class PaintingId(val value: String)
-
-internal data class Artist(val id: String, val name: String)

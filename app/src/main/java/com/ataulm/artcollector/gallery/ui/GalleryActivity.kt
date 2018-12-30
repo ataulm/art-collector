@@ -10,7 +10,7 @@ import com.ataulm.artcollector.DataObserver
 import com.ataulm.artcollector.EventObserver
 import com.ataulm.artcollector.R
 import com.ataulm.artcollector.artistGalleryIntent
-import com.ataulm.artcollector.gallery.domain.Gallery
+import com.ataulm.artcollector.domain.Gallery
 import com.ataulm.artcollector.gallery.injectDependencies
 import com.ataulm.artcollector.paintingIntent
 import com.bumptech.glide.RequestManager

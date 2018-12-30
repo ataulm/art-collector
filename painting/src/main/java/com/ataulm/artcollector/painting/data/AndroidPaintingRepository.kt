@@ -2,8 +2,8 @@ package com.ataulm.artcollector.painting.data
 
 import com.ataulm.artcollector.ApiObjectRecord
 import com.ataulm.artcollector.HarvardArtMuseumApi
-import com.ataulm.artcollector.painting.domain.Artist
-import com.ataulm.artcollector.painting.domain.Painting
+import com.ataulm.artcollector.domain.Artist
+import com.ataulm.artcollector.domain.Painting
 import com.ataulm.artcollector.painting.domain.PaintingId
 import com.ataulm.artcollector.painting.domain.PaintingRepository
 import javax.inject.Inject
