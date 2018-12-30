@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ataulm.artcollector.R
-import com.ataulm.artcollector.domain.Painting
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.itemview_painting.view.*
 
@@ -15,7 +14,7 @@ internal class GalleryAdapter constructor(
         private val glideRequestManager: RequestManager,
         private val onClick: (Int) -> Unit,
         private val onClickArtist: (Int) -> Unit
-) : ListAdapter<Painting, GalleryAdapter.PaintingViewHolder>(PaintingDiffer) {
+) : ListAdapter<UiPainting, GalleryAdapter.PaintingViewHolder>(PaintingDiffer) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PaintingViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.itemview_painting, parent, false)
@@ -24,9 +23,9 @@ internal class GalleryAdapter constructor(
 
     override fun onBindViewHolder(viewHolder: PaintingViewHolder, position: Int) = viewHolder.bind(getItem(position))
 
-    object PaintingDiffer : DiffUtil.ItemCallback<Painting>() {
-        override fun areItemsTheSame(oldItem: Painting, newItem: Painting) = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: Painting, newItem: Painting) = oldItem == newItem
+    object PaintingDiffer : DiffUtil.ItemCallback<UiPainting>() {
+        override fun areItemsTheSame(oldItem: UiPainting, newItem: UiPainting) = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: UiPainting, newItem: UiPainting) = oldItem == newItem
     }
 
     internal class PaintingViewHolder(
@@ -36,9 +35,9 @@ internal class GalleryAdapter constructor(
             view: View
     ) : RecyclerView.ViewHolder(view) {
 
-        fun bind(item: Painting) {
+        fun bind(item: UiPainting) {
             itemView.setOnClickListener { onClick(adapterPosition) }
-            itemView.artistTextView.text = item.artist.name
+            itemView.artistTextView.text = item.artistName
             itemView.artistTextView.setOnClickListener { onClickArtist(adapterPosition) }
             glideRequestManager
                     .load(item.imageUrl)

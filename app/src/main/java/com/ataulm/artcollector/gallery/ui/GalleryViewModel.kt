@@ -2,6 +2,7 @@ package com.ataulm.artcollector.gallery.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.ataulm.artcollector.Event
 import com.ataulm.artcollector.domain.Artist
@@ -20,7 +21,17 @@ internal class GalleryViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _gallery = MutableLiveData<Gallery>()
-    val gallery: LiveData<Gallery> = _gallery
+    val gallery: LiveData<UiGallery> = Transformations.map(_gallery) { gallery ->
+        val paintingUis = gallery.map { painting ->
+            UiPainting(
+                    painting.id,
+                    painting.title,
+                    painting.imageUrl,
+                    painting.artist.name
+            )
+        }
+        UiGallery(paintingUis)
+    }
 
     private val _events = MutableLiveData<Event<NavigateCommand>>()
     val events: LiveData<Event<NavigateCommand>>
