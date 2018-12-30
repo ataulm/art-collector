@@ -4,7 +4,7 @@ import com.ataulm.artcollector.ApiObjectRecord
 import com.ataulm.artcollector.HarvardArtMuseumApi
 import com.ataulm.artcollector.domain.Artist
 import com.ataulm.artcollector.domain.Painting
-import com.ataulm.artcollector.gallery.domain.Gallery
+import com.ataulm.artcollector.domain.Gallery
 import com.ataulm.artcollector.gallery.domain.GalleryRepository
 import javax.inject.Inject
 

@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ataulm.artcollector.Event
 import com.ataulm.artcollector.domain.Artist
-import com.ataulm.artcollector.gallery.domain.Gallery
+import com.ataulm.artcollector.domain.Gallery
 import com.ataulm.artcollector.gallery.domain.GetGalleryUseCase
 import com.ataulm.artcollector.domain.Painting
 import kotlinx.coroutines.CoroutineScope
