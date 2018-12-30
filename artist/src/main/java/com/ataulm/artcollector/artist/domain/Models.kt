@@ -1,5 +1,7 @@
 package com.ataulm.artcollector.artist.domain
 
+import com.ataulm.artcollector.domain.Artist
+
 internal class Gallery(collection: Collection<Painting>) : ArrayList<Painting>(collection)
 
 internal data class Painting(
@@ -8,11 +10,6 @@ internal data class Painting(
         val description: String?,
         val imageUrl: String,
         val artist: Artist
-)
-
-internal data class Artist(
-        val id: String,
-        val name: String
 )
 
 internal data class ArtistId(val value: String)

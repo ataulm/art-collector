@@ -1,5 +1,7 @@
 package com.ataulm.artcollector.painting.domain
 
+import com.ataulm.artcollector.domain.Artist
+
 internal data class Painting(
         val id: String,
         val title: String,
@@ -11,5 +13,3 @@ internal data class Painting(
 )
 
 internal data class PaintingId(val value: String)
-
-internal data class Artist(val id: String, val name: String)

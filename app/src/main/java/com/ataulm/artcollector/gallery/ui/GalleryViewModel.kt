@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ataulm.artcollector.Event
-import com.ataulm.artcollector.gallery.domain.Artist
+import com.ataulm.artcollector.domain.Artist
 import com.ataulm.artcollector.gallery.domain.Gallery
 import com.ataulm.artcollector.gallery.domain.GetGalleryUseCase
 import com.ataulm.artcollector.gallery.domain.Painting

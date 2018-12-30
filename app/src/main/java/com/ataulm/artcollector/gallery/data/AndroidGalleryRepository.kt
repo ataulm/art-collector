@@ -2,7 +2,7 @@ package com.ataulm.artcollector.gallery.data
 
 import com.ataulm.artcollector.ApiObjectRecord
 import com.ataulm.artcollector.HarvardArtMuseumApi
-import com.ataulm.artcollector.gallery.domain.Artist
+import com.ataulm.artcollector.domain.Artist
 import com.ataulm.artcollector.gallery.domain.Gallery
 import com.ataulm.artcollector.gallery.domain.GalleryRepository
 import com.ataulm.artcollector.gallery.domain.Painting
