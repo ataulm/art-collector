@@ -3,13 +3,9 @@ package com.ataulm.artcollector.painting.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.ataulm.artcollector.domain.Painting
 import com.ataulm.artcollector.painting.domain.GetPaintingUseCase
-import com.ataulm.artcollector.painting.domain.Painting
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 internal class PaintingViewModel @Inject constructor(

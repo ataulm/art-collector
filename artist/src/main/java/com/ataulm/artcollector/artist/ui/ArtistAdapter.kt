@@ -1,13 +1,13 @@
 package com.ataulm.artcollector.artist.ui
 
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.ataulm.artcollector.artist.R
-import com.ataulm.artcollector.artist.domain.Painting
+import com.ataulm.artcollector.domain.Painting
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.itemview_artist_painting.view.*
 

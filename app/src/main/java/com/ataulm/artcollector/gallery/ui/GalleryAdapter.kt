@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.ataulm.artcollector.R
-import com.ataulm.artcollector.gallery.domain.Painting
+import com.ataulm.artcollector.domain.Painting
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.itemview_painting.view.*
 

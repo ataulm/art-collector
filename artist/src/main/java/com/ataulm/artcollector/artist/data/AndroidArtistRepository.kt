@@ -7,8 +7,8 @@ import com.ataulm.artcollector.HarvardArtMuseumApi
 import com.ataulm.artcollector.artist.domain.ArtistId
 import com.ataulm.artcollector.artist.domain.ArtistRepository
 import com.ataulm.artcollector.artist.domain.Gallery
-import com.ataulm.artcollector.artist.domain.Painting
 import com.ataulm.artcollector.domain.Artist
+import com.ataulm.artcollector.domain.Painting
 import javax.inject.Inject
 
 internal class AndroidArtistRepository @Inject constructor(
@@ -28,12 +28,15 @@ internal class AndroidArtistRepository @Inject constructor(
     }
 
     private fun ApiObjectRecord.toPainting(): Painting {
+        val apiPerson = people.first()
         return Painting(
                 id.toString(),
                 title,
+                url,
                 description,
+                creditLine,
                 primaryImageUrl,
-                people.first().toArtist()
+                apiPerson.toArtist()
         )
     }
 
