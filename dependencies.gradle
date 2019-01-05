@@ -14,7 +14,7 @@ ext {
 
     libraries = [
             build                      : [
-                    androidGradle        : 'com.android.tools.build:gradle:3.4.0-alpha09',
+                    androidGradle        : 'com.android.tools.build:gradle:3.4.0-alpha10',
                     gradleBuildProperties: 'com.novoda:gradle-build-properties-plugin:0.4.1',
                     kotlinGradle         : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
             ],
@@ -24,6 +24,7 @@ ext {
             androidxLegacySupportV13   : 'androidx.legacy:legacy-support-v13:1.0.0',
             androidxLifecycleExtensions: 'androidx.lifecycle:lifecycle-extensions:2.0.0',
             androidxMaterial           : 'com.google.android.material:material:1.1.0-alpha01',
+            androidxPagingRuntime      : 'androidx.paging:paging-runtime:2.1.0-rc01',
             androidxRecyclerView       : 'androidx.recyclerview:recyclerview:1.0.0',
             androidxTestRules          : 'androidx.test:rules:1.1.0',
             androidxTestRunner         : 'androidx.test:runner:1.1.0',

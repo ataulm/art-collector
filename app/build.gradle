@@ -60,6 +60,7 @@ dependencies {
     api libraries.androidxLegacySupportV13
     api libraries.androidxLifecycleExtensions
     api libraries.androidxMaterial
+    api libraries.androidxPagingRuntime
     api libraries.androidxRecyclerView
     api libraries.dagger
     api libraries.glide
