@@ -1,3 +1,5 @@
 package com.ataulm.artcollector.gallery.ui
 
-internal class UiGallery(collection: Collection<UiPainting>) : ArrayList<UiPainting>(collection)
+import androidx.paging.PagedList
+
+internal data class UiGallery(val paintings: PagedList<UiPainting>)

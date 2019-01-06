@@ -3,18 +3,12 @@ package com.ataulm.artcollector.gallery.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.PagedList
 import com.ataulm.artcollector.Event
-import com.ataulm.artcollector.gallery.domain.GetGalleryPageUseCase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-private const val FIRST_PAGE = 1
 internal class GalleryViewModel @Inject constructor(
-        private val getGalleryPage: GetGalleryPageUseCase
+        private val galleryPaintingsDataSource: GalleryPaintingsDataSource
 ) : ViewModel() {
 
     private val _gallery = MutableLiveData<UiGallery>()
@@ -24,39 +18,32 @@ internal class GalleryViewModel @Inject constructor(
     val events: LiveData<Event<NavigateCommand>>
         get() = _events
 
-    private val parentJob = Job()
-    private val coroutineScope = CoroutineScope(parentJob)
-
     init {
-        coroutineScope.launch(Dispatchers.IO) {
-            val gallery = getGalleryPage(FIRST_PAGE)
-            val paintingUis = gallery.map { painting ->
-                UiPainting(
-                        painting.id,
-                        painting.title,
-                        painting.imageUrl,
-                        painting.artist.id,
-                        painting.artist.name
-                )
-            }
-            val uiGallery = UiGallery(paintingUis)
-            withContext(Dispatchers.Main) { _gallery.value = uiGallery }
-        }
+        val pagedListConfig = PagedList.Config.Builder()
+                .setEnablePlaceholders(false)
+                .setPageSize(10)
+                .build()
+        val pagedList = PagedList.Builder(galleryPaintingsDataSource, pagedListConfig)
+                // TODO: these need to be explicitly set otherwise the builder throws an exception
+//                .setFetchExecutor()
+//                .setNotifyExecutor()
+                .build()
+        _gallery.value = UiGallery(pagedList)
     }
 
-    fun onClick(adapterPosition: Int) {
-        val painting = _gallery.value!![adapterPosition]
-        _events.value = Event(NavigateToPainting(painting, adapterPosition))
+    fun onClick(uiPainting: UiPainting, adapterPosition: Int) {
+        _events.value = Event(NavigateToPainting(uiPainting, adapterPosition))
     }
 
-    fun onClickArtist(adapterPosition: Int) {
-        val artist = _gallery.value!![adapterPosition].artistId
-        _events.value = Event(NavigateToArtistGallery(artist))
+    fun onClickArtist(painting: UiPainting) {
+        _events.value = Event(NavigateToArtistGallery(painting.artistId))
     }
 
     override fun onCleared() {
         super.onCleared()
-        parentJob.cancel()
+        //  TODO: is this necessary?
+        //  If onCleared is called, will a new VM instance be created? Else this datasource is no good.
+        galleryPaintingsDataSource.invalidate()
     }
 }
 

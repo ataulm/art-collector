@@ -7,7 +7,7 @@ import dagger.BindsInstance
 import dagger.Component
 
 @Component(modules = [GalleryModule::class], dependencies = [ApplicationComponent::class])
-internal interface PaintingsComponent {
+internal interface GalleryComponent {
 
     fun inject(activity: GalleryActivity)
 
@@ -19,12 +19,12 @@ internal interface PaintingsComponent {
 
         fun withParent(component: ApplicationComponent): Builder
 
-        fun build(): PaintingsComponent
+        fun build(): GalleryComponent
     }
 }
 
 internal fun GalleryActivity.injectDependencies() {
-    DaggerPaintingsComponent.builder()
+    DaggerGalleryComponent.builder()
             .withParent(ArtCollectorApplication.component(this))
             .activity(this)
             .build()
