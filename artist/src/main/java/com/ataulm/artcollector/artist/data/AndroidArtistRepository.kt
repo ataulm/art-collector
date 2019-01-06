@@ -22,9 +22,11 @@ internal class AndroidArtistRepository @Inject constructor(
     }
 
     override suspend fun artistGallery(): Gallery {
-        val paintings = harvardArtMuseumApi.artistGallery(artistId.value).await().records
+        val apiPaintingsResponse = harvardArtMuseumApi.artistGallery(artistId.value).await()
+        val totalPages = apiPaintingsResponse.info.pages
+        val paintings = apiPaintingsResponse.records
                 .map { it.toPainting() }
-        return Gallery(paintings)
+        return Gallery(totalPages, paintings)
     }
 
     private fun ApiObjectRecord.toPainting(): Painting {

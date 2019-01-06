@@ -4,5 +4,5 @@ import com.ataulm.artcollector.domain.Gallery
 
 internal interface GalleryRepository {
 
-    suspend fun gallery(): Gallery
+    suspend fun gallery(page: Int): Gallery
 }

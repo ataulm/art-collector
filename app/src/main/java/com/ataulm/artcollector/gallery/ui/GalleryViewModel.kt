@@ -4,12 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ataulm.artcollector.Event
-import com.ataulm.artcollector.gallery.domain.GetGalleryUseCase
-import kotlinx.coroutines.*
+import com.ataulm.artcollector.gallery.domain.GetGalleryPageUseCase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
+private const val FIRST_PAGE = 1
 internal class GalleryViewModel @Inject constructor(
-        private val getGallery: GetGalleryUseCase
+        private val getGalleryPage: GetGalleryPageUseCase
 ) : ViewModel() {
 
     private val _gallery = MutableLiveData<UiGallery>()
@@ -24,7 +29,7 @@ internal class GalleryViewModel @Inject constructor(
 
     init {
         coroutineScope.launch(Dispatchers.IO) {
-            val gallery = getGallery()
+            val gallery = getGalleryPage(FIRST_PAGE)
             val paintingUis = gallery.map { painting ->
                 UiPainting(
                         painting.id,
