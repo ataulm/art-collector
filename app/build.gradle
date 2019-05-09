@@ -74,6 +74,7 @@ dependencies {
     implementation libraries.retrofit
     implementation libraries.retrofitMoshi
     implementation libraries.retrofitKotlinCoroutines
+    implementation libraries.roomCommon
 
     kapt libraries.daggerAndroid
     kapt libraries.daggerCompiler
