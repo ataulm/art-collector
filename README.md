@@ -22,10 +22,12 @@ I'll keep meaningful changes restricted to PRs, and will try to keep them small 
 
 ## Building the app
 
-To build the app, you'll need to add `harvard.properties` to the project root with your API key substituted:
+To build the app, you'll need to add a Harvard Art Museums api key to Gradle properties.
+
+e.g. create `~/.gradle/gradle.properties` and stick this in there:
 
 ```
-apiKey=123abc456def
+harvard_art_museums_api_key = 123abc456def
 ```
 
 [Thanks for the name.](https://github.com/florina-muntenescu)
