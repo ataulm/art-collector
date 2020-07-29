@@ -27,11 +27,13 @@ internal class GalleryViewModel @Inject constructor(
             val gallery = getGallery()
             val paintingUis = gallery.map { painting ->
                 UiPainting(
-                        painting.id,
-                        painting.title,
-                        painting.imageUrl,
-                        painting.artist.id,
-                        painting.artist.name
+                        id = painting.id,
+                        title = painting.title,
+                        imageUrl = painting.imageUrl,
+                        artistId = painting.artist.id,
+                        artistName = painting.artist.name,
+                        onClickPainting = { onClick(it) },
+                        onClickArtist = { onClickArtist(it) }
                 )
             }
             val uiGallery = UiGallery(paintingUis)
@@ -39,12 +41,12 @@ internal class GalleryViewModel @Inject constructor(
         }
     }
 
-    fun onClick(adapterPosition: Int) {
+    private fun onClick(adapterPosition: Int) {
         val painting = _gallery.value!![adapterPosition]
         _events.value = Event(NavigateToPainting(painting, adapterPosition))
     }
 
-    fun onClickArtist(adapterPosition: Int) {
+    private fun onClickArtist(adapterPosition: Int) {
         val artist = _gallery.value!![adapterPosition].artistId
         _events.value = Event(NavigateToArtistGallery(artist))
     }
