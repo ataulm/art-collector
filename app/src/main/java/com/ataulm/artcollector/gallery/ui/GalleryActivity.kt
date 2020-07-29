@@ -26,11 +26,7 @@ class GalleryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gallery)
 
-        val adapter = GalleryAdapter(
-                glideRequestManager,
-                onClickPainting,
-                onClickArtist
-        )
+        val adapter = GalleryAdapter(glideRequestManager)
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(GallerySpacingItemDecoration(resources))
 
@@ -45,10 +41,6 @@ class GalleryActivity : AppCompatActivity() {
             }
         })
     }
-
-    private val onClickArtist: (Int) -> Unit = { viewModel.onClickArtist(it) }
-
-    private val onClickPainting: (Int) -> Unit = { viewModel.onClick(it) }
 
     private fun navigateToArtistGallery(it: NavigateToArtistGallery) {
         val intent = artistGalleryIntent(it.artistId)
