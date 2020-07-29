@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.ataulm.artcollector.DataObserver
-import com.ataulm.artcollector.domain.Painting
+import com.ataulm.artcollector.Painting
 import com.ataulm.artcollector.imageUrl
 import com.ataulm.artcollector.painting.R
 import com.ataulm.artcollector.painting.domain.PaintingId
@@ -38,7 +38,7 @@ class PaintingActivity : AppCompatActivity() {
         postponeEnterTransition()
 
         intent.loadImageIfAvailable()
-        viewModel.painting.observe(this, DataObserver<Painting> { painting ->
+        viewModel.painting.observe(this, DataObserver<com.ataulm.artcollector.Painting> { painting ->
             title = painting.title
             titleArtistTextView.text = getString(R.string.painting_title_artist, painting.title, painting.artist.name)
             creditLineTextView.text = painting.creditLine?.let { getString(R.string.painting_credit, it) }
@@ -65,7 +65,7 @@ class PaintingActivity : AppCompatActivity() {
         }
     }
 
-    private fun Painting.loadImageIfDifferent() {
+    private fun com.ataulm.artcollector.Painting.loadImageIfDifferent() {
         if (imageUrl != intent.imageUrl()) {
             glideRequestManager.clear(imageView)
             glideRequestManager.load(imageUrl)

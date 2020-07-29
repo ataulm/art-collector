@@ -1,4 +1,4 @@
-package com.ataulm.artcollector.domain
+package com.ataulm.artcollector
 
 data class Painting(
         val id: String,

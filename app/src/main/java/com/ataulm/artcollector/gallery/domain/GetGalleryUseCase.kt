@@ -1,5 +1,6 @@
 package com.ataulm.artcollector.gallery.domain
 
+import com.ataulm.artcollector.datanotdomain.GalleryRepository
 import javax.inject.Inject
 
 internal class GetGalleryUseCase @Inject constructor(
@@ -8,4 +9,3 @@ internal class GetGalleryUseCase @Inject constructor(
 
     suspend operator fun invoke() = repository.gallery()
 }
-

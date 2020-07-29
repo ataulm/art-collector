@@ -52,6 +52,7 @@ android {
 }
 
 dependencies {
+    api project(':domain')
     api libraries.androidxAppCompat
     api libraries.androidxConstraintLayout
     api libraries.androidxLegacySupportV13

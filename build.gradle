@@ -3,9 +3,6 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven {
-            url 'https://dl.bintray.com/kotlin/kotlin-eap/'
-        }
     }
     dependencies {
         classpath libraries.build.androidGradle
@@ -18,7 +15,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://dl.bintray.com/kotlin/kotlin-eap/' }
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
         maven { url "https://jitpack.io" }
     }

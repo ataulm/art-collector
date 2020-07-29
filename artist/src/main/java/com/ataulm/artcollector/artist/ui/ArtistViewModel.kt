@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModel
 import com.ataulm.artcollector.Event
 import com.ataulm.artcollector.artist.domain.GetArtistGalleryUseCase
 import com.ataulm.artcollector.artist.domain.GetArtistUseCase
-import com.ataulm.artcollector.domain.Artist
-import com.ataulm.artcollector.domain.Gallery
-import com.ataulm.artcollector.domain.Painting
+import com.ataulm.artcollector.Artist
+import com.ataulm.artcollector.Gallery
+import com.ataulm.artcollector.Painting
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
@@ -18,8 +18,8 @@ internal class ArtistViewModel @Inject constructor(
         private val getArtistGallery: GetArtistGalleryUseCase
 ) : ViewModel() {
 
-    private val _artist = MutableLiveData<Artist>()
-    private val _gallery = MutableLiveData<Gallery>()
+    private val _artist = MutableLiveData<com.ataulm.artcollector.Artist>()
+    private val _gallery = MutableLiveData<com.ataulm.artcollector.Gallery>()
 
     private val _artistGallery = ArtistGalleryMediatorLiveData()
     val artistGallery: LiveData<ArtistGallery> = _artistGallery
@@ -57,21 +57,21 @@ internal class ArtistViewModel @Inject constructor(
     }
 }
 
-internal data class NavigateToPainting(val painting: Painting, val adapterPosition: Int)
+internal data class NavigateToPainting(val painting: com.ataulm.artcollector.Painting, val adapterPosition: Int)
 
-internal data class ArtistGallery(val artist: Artist, val gallery: Gallery)
+internal data class ArtistGallery(val artist: com.ataulm.artcollector.Artist, val gallery: com.ataulm.artcollector.Gallery)
 
 private class ArtistGalleryMediatorLiveData : MediatorLiveData<ArtistGallery>() {
 
-    private var artist: Artist? = null
-    private var gallery: Gallery? = null
+    private var artist: com.ataulm.artcollector.Artist? = null
+    private var gallery: com.ataulm.artcollector.Gallery? = null
 
-    fun update(artist: Artist) {
+    fun update(artist: com.ataulm.artcollector.Artist) {
         this.artist = artist
         onUpdate()
     }
 
-    fun update(gallery: Gallery) {
+    fun update(gallery: com.ataulm.artcollector.Gallery) {
         this.gallery = gallery
         onUpdate()
     }

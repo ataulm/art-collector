@@ -1,3 +1,4 @@
 include ':app'
 include ':artist'
+include ':domain'
 include ':painting'

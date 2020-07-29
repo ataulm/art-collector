@@ -6,9 +6,9 @@ import com.ataulm.artcollector.ApiPersonRecord
 import com.ataulm.artcollector.HarvardArtMuseumApi
 import com.ataulm.artcollector.artist.domain.ArtistId
 import com.ataulm.artcollector.artist.domain.ArtistRepository
-import com.ataulm.artcollector.domain.Artist
-import com.ataulm.artcollector.domain.Gallery
-import com.ataulm.artcollector.domain.Painting
+import com.ataulm.artcollector.Artist
+import com.ataulm.artcollector.Gallery
+import com.ataulm.artcollector.Painting
 import javax.inject.Inject
 
 internal class AndroidArtistRepository @Inject constructor(
@@ -16,20 +16,20 @@ internal class AndroidArtistRepository @Inject constructor(
         private val artistId: ArtistId
 ) : ArtistRepository {
 
-    override suspend fun artist(): Artist {
+    override suspend fun artist(): com.ataulm.artcollector.Artist {
         val qValue = "personid:${artistId.value}"
         return harvardArtMuseumApi.artist(qValue).await().records.first().toArtist()
     }
 
-    override suspend fun artistGallery(): Gallery {
+    override suspend fun artistGallery(): com.ataulm.artcollector.Gallery {
         val paintings = harvardArtMuseumApi.artistGallery(artistId.value).await().records
                 .map { it.toPainting() }
-        return Gallery(paintings)
+        return com.ataulm.artcollector.Gallery(paintings)
     }
 
-    private fun ApiObjectRecord.toPainting(): Painting {
+    private fun ApiObjectRecord.toPainting(): com.ataulm.artcollector.Painting {
         val apiPerson = people.first()
-        return Painting(
+        return com.ataulm.artcollector.Painting(
                 id.toString(),
                 title,
                 url,
@@ -40,6 +40,6 @@ internal class AndroidArtistRepository @Inject constructor(
         )
     }
 
-    private fun ApiPerson.toArtist() = Artist(personId.toString(), name)
-    private fun ApiPersonRecord.toArtist() = Artist(personId.toString(), displayName)
+    private fun ApiPerson.toArtist() = com.ataulm.artcollector.Artist(personId.toString(), name)
+    private fun ApiPersonRecord.toArtist() = com.ataulm.artcollector.Artist(personId.toString(), displayName)
 }

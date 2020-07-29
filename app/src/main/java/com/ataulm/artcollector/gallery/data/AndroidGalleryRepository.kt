@@ -2,10 +2,10 @@ package com.ataulm.artcollector.gallery.data
 
 import com.ataulm.artcollector.ApiObjectRecord
 import com.ataulm.artcollector.HarvardArtMuseumApi
-import com.ataulm.artcollector.domain.Artist
-import com.ataulm.artcollector.domain.Painting
-import com.ataulm.artcollector.domain.Gallery
-import com.ataulm.artcollector.gallery.domain.GalleryRepository
+import com.ataulm.artcollector.Artist
+import com.ataulm.artcollector.Painting
+import com.ataulm.artcollector.Gallery
+import com.ataulm.artcollector.datanotdomain.GalleryRepository
 import javax.inject.Inject
 
 internal class AndroidGalleryRepository @Inject constructor(

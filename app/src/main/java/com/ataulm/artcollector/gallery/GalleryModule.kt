@@ -1,8 +1,8 @@
 package com.ataulm.artcollector.gallery
 
 import androidx.lifecycle.ViewModelProviders
+import com.ataulm.artcollector.datanotdomain.GalleryRepository
 import com.ataulm.artcollector.gallery.data.AndroidGalleryRepository
-import com.ataulm.artcollector.gallery.domain.GalleryRepository
 import com.ataulm.artcollector.gallery.ui.GalleryActivity
 import com.ataulm.artcollector.gallery.ui.GalleryViewModel
 import com.ataulm.artcollector.gallery.ui.GalleryViewModelFactory

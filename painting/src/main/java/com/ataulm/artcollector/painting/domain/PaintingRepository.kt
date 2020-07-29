@@ -1,8 +1,8 @@
 package com.ataulm.artcollector.painting.domain
 
-import com.ataulm.artcollector.domain.Painting
+import com.ataulm.artcollector.Painting
 
 internal interface PaintingRepository {
 
-    suspend fun painting(): Painting
+    suspend fun painting(): com.ataulm.artcollector.Painting
 }
