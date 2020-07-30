@@ -4,5 +4,5 @@ import com.ataulm.artcollector.Painting
 
 internal interface PaintingRepository {
 
-    suspend fun painting(): com.ataulm.artcollector.Painting
+    suspend fun painting(): Painting
 }

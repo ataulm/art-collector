@@ -26,7 +26,7 @@ internal class AndroidPaintingRepository @Inject constructor(
                 description,
                 creditLine,
                 primaryImageUrl,
-                com.ataulm.artcollector.Artist(apiPerson.personId.toString(), apiPerson.name)
+                Artist(apiPerson.personId.toString(), apiPerson.name)
         )
     }
 }

@@ -8,20 +8,15 @@ import androidx.paging.*
 import com.ataulm.artcollector.Event
 import com.ataulm.artcollector.Painting
 import com.ataulm.artcollector.gallery.domain.GetGalleryUseCase
-import com.ataulm.artcollector.gallery.domain.GetPagedGalleryUseCase
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 internal class GalleryViewModel @Inject constructor(
-        private val getGallery: GetGalleryUseCase,
-        private val getPagedGallery: GetPagedGalleryUseCase
+        private val getGallery: GetGalleryUseCase
 ) : ViewModel() {
-
-    private val _gallery = MutableLiveData<UiGallery>()
-    val gallery: LiveData<UiGallery> = _gallery
 
     private val _events = MutableLiveData<Event<NavigateCommand>>()
     val events: LiveData<Event<NavigateCommand>>
@@ -30,17 +25,8 @@ internal class GalleryViewModel @Inject constructor(
     private val parentJob = Job()
     private val coroutineScope = CoroutineScope(parentJob)
 
-    init {
-//        coroutineScope.launch(Dispatchers.IO) {
-//            val gallery = getGallery()
-//            val paintingUis = gallery.map { it.toUiModel() }
-//            val uiGallery = UiGallery(paintingUis)
-//            withContext(Dispatchers.Main) { _gallery.value = uiGallery }
-//        }
-    }
-
     fun pagedGallery(): Flow<PagingData<UiPainting>> {
-        val pagingSource = getPagedGallery()
+        val pagingSource = getGallery()
         val pager = Pager(config = PagingConfig(pageSize = 9)) { pagingSource }
         return pager.flow.map { paintingPagingData: PagingData<Painting> ->
             paintingPagingData.map { it.toUiModel() }

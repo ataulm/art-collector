@@ -12,8 +12,8 @@ internal class PaintingViewModel @Inject constructor(
         private val getPainting: GetPaintingUseCase
 ) : ViewModel() {
 
-    private val _painting = MutableLiveData<com.ataulm.artcollector.Painting>()
-    val painting: LiveData<com.ataulm.artcollector.Painting> = _painting
+    private val _painting = MutableLiveData<Painting>()
+    val painting: LiveData<Painting> = _painting
 
     private val parentJob = Job()
     private val coroutineScope = CoroutineScope(parentJob)

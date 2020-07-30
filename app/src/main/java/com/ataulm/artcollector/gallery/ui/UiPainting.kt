@@ -8,9 +8,6 @@ internal data class UiPainting(
         val imageUrl: String,
         val artistId: String,
         val artistName: String,
-        /**
-         * The `view` parameter is used for the shared element transition.
-         */
         val onClickPainting: (View) -> Unit,
         val onClickArtist: () -> Unit
 )

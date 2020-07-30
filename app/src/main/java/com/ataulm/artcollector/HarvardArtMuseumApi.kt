@@ -13,7 +13,7 @@ interface HarvardArtMuseumApi {
 
     @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_AND_ACCESS_TO_IMAGES_&$INC_FIELDS")
     suspend fun gallery(
-            @Query("size") pageSize: Int = 100,
+            @Query("size") pageSize: Int,
             @Query("page") page: Int? = null
     ): ApiPaintingsResponse
 
