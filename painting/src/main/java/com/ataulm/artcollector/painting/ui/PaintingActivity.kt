@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.ataulm.artcollector.DataObserver
-import com.ataulm.artcollector.domain.Painting
+import com.ataulm.artcollector.Painting
 import com.ataulm.artcollector.imageUrl
 import com.ataulm.artcollector.painting.R
 import com.ataulm.artcollector.painting.domain.PaintingId

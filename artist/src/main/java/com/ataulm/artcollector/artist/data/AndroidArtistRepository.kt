@@ -6,9 +6,9 @@ import com.ataulm.artcollector.ApiPersonRecord
 import com.ataulm.artcollector.HarvardArtMuseumApi
 import com.ataulm.artcollector.artist.domain.ArtistId
 import com.ataulm.artcollector.artist.domain.ArtistRepository
-import com.ataulm.artcollector.domain.Artist
-import com.ataulm.artcollector.domain.Gallery
-import com.ataulm.artcollector.domain.Painting
+import com.ataulm.artcollector.Artist
+import com.ataulm.artcollector.Gallery
+import com.ataulm.artcollector.Painting
 import javax.inject.Inject
 
 internal class AndroidArtistRepository @Inject constructor(
@@ -18,11 +18,11 @@ internal class AndroidArtistRepository @Inject constructor(
 
     override suspend fun artist(): Artist {
         val qValue = "personid:${artistId.value}"
-        return harvardArtMuseumApi.artist(qValue).await().records.first().toArtist()
+        return harvardArtMuseumApi.artist(qValue).records.first().toArtist()
     }
 
     override suspend fun artistGallery(): Gallery {
-        val paintings = harvardArtMuseumApi.artistGallery(artistId.value).await().records
+        val paintings = harvardArtMuseumApi.artistGallery(artistId.value).records
                 .map { it.toPainting() }
         return Gallery(paintings)
     }

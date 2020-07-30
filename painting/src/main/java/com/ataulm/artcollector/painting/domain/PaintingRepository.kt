@@ -1,6 +1,6 @@
 package com.ataulm.artcollector.painting.domain
 
-import com.ataulm.artcollector.domain.Painting
+import com.ataulm.artcollector.Painting
 
 internal interface PaintingRepository {
 

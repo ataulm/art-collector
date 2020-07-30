@@ -1,16 +1,19 @@
 package com.ataulm.artcollector.gallery.ui
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
-import androidx.recyclerview.widget.RecyclerView
-import com.ataulm.artcollector.*
+import androidx.lifecycle.lifecycleScope
+import com.ataulm.artcollector.EventObserver
+import com.ataulm.artcollector.R
+import com.ataulm.artcollector.artistGalleryIntent
 import com.ataulm.artcollector.gallery.injectDependencies
+import com.ataulm.artcollector.paintingIntent
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_gallery.*
-import kotlinx.android.synthetic.main.itemview_painting.view.*
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class GalleryActivity : AppCompatActivity() {
@@ -29,10 +32,9 @@ class GalleryActivity : AppCompatActivity() {
         val adapter = GalleryAdapter(glideRequestManager)
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(GallerySpacingItemDecoration(resources))
-
-        viewModel.gallery.observe(this, DataObserver<UiGallery> { gallery ->
-            adapter.submitList(gallery)
-        })
+        lifecycleScope.launch {
+            viewModel.pagedGallery().collectLatest { adapter.submitData(it) }
+        }
 
         viewModel.events.observe(this, EventObserver { command ->
             when (command) {
@@ -48,14 +50,8 @@ class GalleryActivity : AppCompatActivity() {
     }
 
     private fun navigateToPainting(command: NavigateToPainting) {
-        val (painting, adapterPosition) = command.painting to command.adapterPosition
-        val paintingIntent = paintingIntent(painting.artistId, painting.id, painting.imageUrl)
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, recyclerView.sharedElements(adapterPosition))
+        val paintingIntent = paintingIntent(command.artistId, command.paintingId, command.imageUrl)
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(this, Pair(command.view, getString(R.string.shared_element_painting)))
         startActivity(paintingIntent, options.toBundle())
-    }
-
-    private fun RecyclerView.sharedElements(adapterPosition: Int): Pair<View, String> {
-        val itemView = layoutManager?.findViewByPosition(adapterPosition)!!
-        return Pair(itemView.imageView as View, getString(R.string.shared_element_painting))
     }
 }

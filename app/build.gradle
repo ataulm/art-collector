@@ -11,6 +11,11 @@ buildProperties {
 }
 
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     compileSdkVersion versions.androidSdk.compile
 
     defaultConfig {
@@ -52,6 +57,7 @@ android {
 }
 
 dependencies {
+    api project(':domain')
     api libraries.androidxAppCompat
     api libraries.androidxConstraintLayout
     api libraries.androidxLegacySupportV13
@@ -65,12 +71,12 @@ dependencies {
     api libraries.kotlinStdLib
     api libraries.photoView
 
+    implementation libraries.androidxPagingRuntime
     debugImplementation libraries.chuck
     releaseImplementation libraries.chuckNoOp
     implementation libraries.moshi
     implementation libraries.retrofit
     implementation libraries.retrofitMoshi
-    implementation libraries.retrofitKotlinCoroutines
 
     kapt libraries.daggerAndroid
     kapt libraries.daggerCompiler

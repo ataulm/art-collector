@@ -1,7 +1,7 @@
 package com.ataulm.artcollector.artist.domain
 
-import com.ataulm.artcollector.domain.Artist
-import com.ataulm.artcollector.domain.Gallery
+import com.ataulm.artcollector.Artist
+import com.ataulm.artcollector.Gallery
 
 internal interface ArtistRepository {
 

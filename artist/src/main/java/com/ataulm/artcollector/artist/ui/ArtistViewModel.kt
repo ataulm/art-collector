@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModel
 import com.ataulm.artcollector.Event
 import com.ataulm.artcollector.artist.domain.GetArtistGalleryUseCase
 import com.ataulm.artcollector.artist.domain.GetArtistUseCase
-import com.ataulm.artcollector.domain.Artist
-import com.ataulm.artcollector.domain.Gallery
-import com.ataulm.artcollector.domain.Painting
+import com.ataulm.artcollector.Artist
+import com.ataulm.artcollector.Gallery
+import com.ataulm.artcollector.Painting
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
