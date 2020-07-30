@@ -16,20 +16,20 @@ internal class AndroidArtistRepository @Inject constructor(
         private val artistId: ArtistId
 ) : ArtistRepository {
 
-    override suspend fun artist(): com.ataulm.artcollector.Artist {
+    override suspend fun artist(): Artist {
         val qValue = "personid:${artistId.value}"
-        return harvardArtMuseumApi.artist(qValue).await().records.first().toArtist()
+        return harvardArtMuseumApi.artist(qValue).records.first().toArtist()
     }
 
-    override suspend fun artistGallery(): com.ataulm.artcollector.Gallery {
-        val paintings = harvardArtMuseumApi.artistGallery(artistId.value).await().records
+    override suspend fun artistGallery(): Gallery {
+        val paintings = harvardArtMuseumApi.artistGallery(artistId.value).records
                 .map { it.toPainting() }
-        return com.ataulm.artcollector.Gallery(paintings)
+        return Gallery(paintings)
     }
 
-    private fun ApiObjectRecord.toPainting(): com.ataulm.artcollector.Painting {
+    private fun ApiObjectRecord.toPainting(): Painting {
         val apiPerson = people.first()
-        return com.ataulm.artcollector.Painting(
+        return Painting(
                 id.toString(),
                 title,
                 url,
@@ -40,6 +40,6 @@ internal class AndroidArtistRepository @Inject constructor(
         )
     }
 
-    private fun ApiPerson.toArtist() = com.ataulm.artcollector.Artist(personId.toString(), name)
-    private fun ApiPersonRecord.toArtist() = com.ataulm.artcollector.Artist(personId.toString(), displayName)
+    private fun ApiPerson.toArtist() = Artist(personId.toString(), name)
+    private fun ApiPersonRecord.toArtist() = Artist(personId.toString(), displayName)
 }

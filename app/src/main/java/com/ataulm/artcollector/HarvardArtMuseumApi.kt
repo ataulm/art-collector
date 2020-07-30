@@ -11,22 +11,24 @@ import retrofit2.http.Query
 
 interface HarvardArtMuseumApi {
 
-    @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_AND_ACCESS_TO_IMAGES_&$PAGE_SIZE_&$INC_FIELDS")
-    fun gallery(): Deferred<ApiPaintingsResponse>
+    @GET("object?$PAINTINGS_&$WITH_IMAGES_&$WITH_ARTIST_AND_ACCESS_TO_IMAGES_&$INC_FIELDS")
+    suspend fun gallery(
+            @Query("size") pageSize: Int = 100,
+            @Query("page") page: Int? = null
+    ): ApiPaintingsResponse
 
     @GET("person")
-    fun artist(@Query("q") qValue: String): Deferred<ApiPersonResponse>
+    suspend fun artist(@Query("q") qValue: String): ApiPersonResponse
 
     @GET("object?$PAINTINGS_&$WITH_IMAGES_&$INC_FIELDS")
-    fun artistGallery(@Query("person") artistId: String): Deferred<ApiPaintingsResponse>
+    suspend fun artistGallery(@Query("person") artistId: String): ApiPaintingsResponse
 
     @GET("object/{object_id}?$INC_FIELDS")
-    fun painting(@Path("object_id") id: String): Deferred<ApiObjectRecord>
+    suspend fun painting(@Path("object_id") id: String): ApiObjectRecord
 
     companion object {
 
         const val ENDPOINT = "https://api.harvardartmuseums.org"
-        private const val PAGE_SIZE_ = "size=100"
         private const val PAINTINGS_ = "classification=26"
         private const val WITH_IMAGES_ = "hasimage=1"
         private const val WITH_ARTIST_AND_ACCESS_TO_IMAGES_ = "q=people.role:Artist AND imagepermissionlevel:0"
@@ -62,8 +64,7 @@ data class ApiInfo(
         @Json(name = "totalrecordsperquery") val totalRecordsPerQuery: Int,
         @Json(name = "totalrecords") val totalRecords: Int,
         @Json(name = "pages") val pages: Int,
-        @Json(name = "page") val page: Int,
-        @Json(name = "next") val next: String?
+        @Json(name = "page") val page: Int
 )
 
 @JsonClass(generateAdapter = true)

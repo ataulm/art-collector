@@ -1,15 +1,23 @@
 package com.ataulm.artcollector.gallery.ui
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.*
 import com.ataulm.artcollector.Event
+import com.ataulm.artcollector.Painting
 import com.ataulm.artcollector.gallery.domain.GetGalleryUseCase
+import com.ataulm.artcollector.gallery.domain.GetPagedGalleryUseCase
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 internal class GalleryViewModel @Inject constructor(
-        private val getGallery: GetGalleryUseCase
+        private val getGallery: GetGalleryUseCase,
+        private val getPagedGallery: GetPagedGalleryUseCase
 ) : ViewModel() {
 
     private val _gallery = MutableLiveData<UiGallery>()
@@ -23,32 +31,52 @@ internal class GalleryViewModel @Inject constructor(
     private val coroutineScope = CoroutineScope(parentJob)
 
     init {
-        coroutineScope.launch(Dispatchers.IO) {
-            val gallery = getGallery()
-            val paintingUis = gallery.map { painting ->
-                UiPainting(
-                        id = painting.id,
-                        title = painting.title,
-                        imageUrl = painting.imageUrl,
-                        artistId = painting.artist.id,
-                        artistName = painting.artist.name,
-                        onClickPainting = { onClick(it) },
-                        onClickArtist = { onClickArtist(it) }
+//        coroutineScope.launch(Dispatchers.IO) {
+//            val gallery = getGallery()
+//            val paintingUis = gallery.map { it.toUiModel() }
+//            val uiGallery = UiGallery(paintingUis)
+//            withContext(Dispatchers.Main) { _gallery.value = uiGallery }
+//        }
+    }
+
+    fun pagedGallery(): Flow<PagingData<UiPainting>> {
+        val pagingSource = getPagedGallery()
+        val pager = Pager(config = PagingConfig(pageSize = 9)) { pagingSource }
+        return pager.flow.map { paintingPagingData: PagingData<Painting> ->
+            paintingPagingData.map { it.toUiModel() }
+            // TODO: we can remove some of this boilerplate
+            // https://medium.com/androiddevelopers/easy-coroutines-in-android-viewmodelscope-25bffb605471
+        }.cachedIn(coroutineScope)
+    }
+
+    private fun Painting.toUiModel() = UiPainting(
+            id = id,
+            title = title,
+            imageUrl = imageUrl,
+            artistId = artist.id,
+            artistName = artist.name,
+            onClickPainting = {
+                onClick(
+                        artistId = artist.id,
+                        paintingId = id,
+                        imageUrl = imageUrl,
+                        view = it
                 )
-            }
-            val uiGallery = UiGallery(paintingUis)
-            withContext(Dispatchers.Main) { _gallery.value = uiGallery }
-        }
+            },
+            onClickArtist = { onClickArtist(artist.id) }
+    )
+
+    private fun onClick(
+            artistId: String,
+            paintingId: String,
+            imageUrl: String,
+            view: View
+    ) {
+        _events.value = Event(NavigateToPainting(artistId, paintingId, imageUrl, view))
     }
 
-    private fun onClick(adapterPosition: Int) {
-        val painting = _gallery.value!![adapterPosition]
-        _events.value = Event(NavigateToPainting(painting, adapterPosition))
-    }
-
-    private fun onClickArtist(adapterPosition: Int) {
-        val artist = _gallery.value!![adapterPosition].artistId
-        _events.value = Event(NavigateToArtistGallery(artist))
+    private fun onClickArtist(artistId: String) {
+        _events.value = Event(NavigateToArtistGallery(artistId))
     }
 
     override fun onCleared() {
@@ -58,5 +86,11 @@ internal class GalleryViewModel @Inject constructor(
 }
 
 internal sealed class NavigateCommand
-internal data class NavigateToPainting(val painting: UiPainting, val adapterPosition: Int) : NavigateCommand()
+internal data class NavigateToPainting(
+        val artistId: String,
+        val paintingId: String,
+        val imageUrl: String,
+        val view: View
+) : NavigateCommand()
+
 internal data class NavigateToArtistGallery(val artistId: String) : NavigateCommand()

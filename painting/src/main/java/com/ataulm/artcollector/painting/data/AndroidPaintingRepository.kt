@@ -13,13 +13,13 @@ internal class AndroidPaintingRepository @Inject constructor(
         private val paintingId: PaintingId
 ) : PaintingRepository {
 
-    override suspend fun painting(): com.ataulm.artcollector.Painting {
-        return harvardArtMuseumApi.painting(paintingId.value).await().toPainting()
+    override suspend fun painting(): Painting {
+        return harvardArtMuseumApi.painting(paintingId.value).toPainting()
     }
 
-    private fun ApiObjectRecord.toPainting(): com.ataulm.artcollector.Painting {
+    private fun ApiObjectRecord.toPainting(): Painting {
         val apiPerson = people.first()
-        return com.ataulm.artcollector.Painting(
+        return Painting(
                 id.toString(),
                 title,
                 url,

@@ -1,5 +1,7 @@
 package com.ataulm.artcollector.gallery.ui
 
+import android.view.View
+
 internal data class UiPainting(
         val id: String,
         val title: String,
@@ -7,9 +9,8 @@ internal data class UiPainting(
         val artistId: String,
         val artistName: String,
         /**
-         * The `Int` parameter is the view adapter position. This is needed to get a reference
-         * to the item view for the shared element transition. Same with [onClickArtist].
+         * The `view` parameter is used for the shared element transition.
          */
-        val onClickPainting: (Int) -> Unit,
-        val onClickArtist: (Int) -> Unit
+        val onClickPainting: (View) -> Unit,
+        val onClickArtist: () -> Unit
 )

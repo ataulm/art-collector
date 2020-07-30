@@ -9,3 +9,10 @@ internal class GetGalleryUseCase @Inject constructor(
 
     suspend operator fun invoke() = repository.gallery()
 }
+
+internal class GetPagedGalleryUseCase @Inject constructor(
+        private val repository: GalleryRepository
+) {
+
+    operator fun invoke() = repository.pagedGallery()
+}

@@ -2,7 +2,6 @@ package com.ataulm.artcollector
 
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.readystatesoftware.chuck.ChuckInterceptor
 import dagger.BindsInstance
 import dagger.Component
@@ -45,7 +44,6 @@ object ApplicationModule {
                         .addInterceptor(ChuckInterceptor(application))
                         .build())
                 .baseUrl(HarvardArtMuseumApi.ENDPOINT)
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(MoshiConverterFactory.create())
                 .build()
                 .create(HarvardArtMuseumApi::class.java)

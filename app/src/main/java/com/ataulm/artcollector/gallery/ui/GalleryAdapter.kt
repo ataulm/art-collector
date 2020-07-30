@@ -32,9 +32,9 @@ internal class GalleryAdapter constructor(
     ) : RecyclerView.ViewHolder(view) {
 
         fun bind(item: UiPainting) {
-            itemView.setOnClickListener { item.onClickPainting(adapterPosition) }
+            itemView.setOnClickListener { item.onClickPainting(itemView.imageView) }
             itemView.artistTextView.text = item.artistName
-            itemView.artistTextView.setOnClickListener { item.onClickArtist(adapterPosition) }
+            itemView.artistTextView.setOnClickListener { item.onClickArtist() }
             glideRequestManager
                     .load(item.imageUrl)
                     .into(itemView.imageView)
