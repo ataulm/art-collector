@@ -4,9 +4,25 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+    buildFeatures {
+        // enables compose for this module (TODO: is this the right module to put it in?)
+        compose true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+        // kotlin intermediate representation
+        useIR = true
+    }
+
+    composeOptions {
+        kotlinCompilerVersion versions.kotlin
+        kotlinCompilerExtensionVersion versions.kotlinCompose
     }
 
     compileSdkVersion versions.androidSdk.compile
@@ -58,6 +74,10 @@ dependencies {
     api libraries.androidxRecyclerView
     api libraries.dagger
     api libraries.glide
+    // TODO: what's in here? is this the "base" one or is "compose ui"?
+//    api libraries.kotlinComposeFoundation
+    api libraries.kotlinComposeUi
+    api libraries.kotlinComposeUiTooling
     api libraries.kotlinCoroutinesAndroid
     api libraries.kotlinCoroutinesCore
     api libraries.kotlinStdLib

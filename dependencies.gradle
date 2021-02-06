@@ -8,6 +8,7 @@ ext {
             chuck           : '1.1.0',
             dagger          : '2.16',
             kotlin          : '1.4.30',
+            kotlinCompose   : '1.0.0-alpha11',
             kotlinCoroutines: '1.4.2',
             moshi           : '1.11.0',
             paging          : '3.0.0-alpha03'
@@ -15,8 +16,8 @@ ext {
 
     libraries = [
             build                      : [
-                    androidGradle        : 'com.android.tools.build:gradle:7.0.0-alpha05',
-                    kotlinGradle         : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+                    androidGradle: 'com.android.tools.build:gradle:7.0.0-alpha05',
+                    kotlinGradle : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
             ],
             androidxAppCompat          : 'androidx.appcompat:appcompat:1.0.2',
             androidxConstraintLayout   : 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2',
@@ -37,9 +38,12 @@ ext {
             glide                      : 'com.github.bumptech.glide:glide:4.8.0',
             googleTruth                : 'com.google.truth:truth:0.42',
             jUnit                      : 'junit:junit:4.12',
-            kotlinStdLib               : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+            kotlinComposeFoundation    : "androidx.compose.foundation:foundation:${versions.kotlinCompose}",
+            kotlinComposeUi            : "androidx.compose.ui:ui:${versions.kotlinCompose}",
+            kotlinComposeUiTooling     : "androidx.compose.ui:ui-tooling:${versions.kotlinCompose}",
             kotlinCoroutinesAndroid    : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinCoroutines}",
             kotlinCoroutinesCore       : "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinCoroutines}",
+            kotlinStdLib               : "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
             mockitoCore                : 'org.mockito:mockito-core:2.19.1',
             mockitoKotlin              : 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0',
             moshi                      : "com.squareup.moshi:moshi:${versions.moshi}",
