@@ -2,11 +2,10 @@ buildscript {
     apply from: 'dependencies.gradle'
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath libraries.build.androidGradle
-        classpath libraries.build.gradleBuildProperties
         classpath libraries.build.kotlinGradle
     }
 }
@@ -14,7 +13,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
         maven { url "https://jitpack.io" }
     }
